@@ -1,0 +1,78 @@
+﻿<!doctype html>
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<head>
+<title>FlexPanel - A Responsive Panel Navigation for Mobile and Desktop</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, maximum-scale=1 user-scalable=no" />
+<link rel="stylesheet" href="css/base.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/flexpanel.css" type="text/css" media="screen" />
+<!--[if lt IE 9]>
+	<link href="css/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<![endif]-->
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script type='text/javascript' src='js/modernizr.js'></script>
+</head>
+<body>
+<div id="container">
+	
+  
+  <div id="wrapper">
+	<div class="inner">
+		<h1>Panel Navigation</h1>
+		<img src="images/beach.jpg" class="aligncenter">
+		<p>This responsive navigation Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+		<h2>A Responsive Panel Navigation for Mobile and Desktop</h2>
+		<p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+	</div>
+  </div>
+  <div id="flexpanel">
+      <div class="flex-btn"><span>Menu</span></div>
+      <div class="viewport-wrap">
+        <div class="viewport scrollable">
+          <nav>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li class="active"><a href="#">Work</a>
+              	<ul>
+		              <li><a href="#">Design</a></li>
+		              <li><a href="#">Development</a></li>
+		              <li><a href="#">iOS Apps</a></li>
+		              <li><a href="#">Mac App</a></li>
+		              <li><a href="#">Print</a></li>
+		              <li><a href="#">Archives</a></li>
+	              </ul>
+              </li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="/">Services</a></li>
+              <li><a href="/">About</a></li>
+              <li><a href="/">Careers</a></li>
+              <li><a href="/">Contact</a></li>
+            </ul>
+          </nav>
+          <section class="social">
+          	<a href="https://twitter.com/KaptonKaos" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @KaptonKaos</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </section>
+        </div>
+      </div>   
+  </div>
+</div>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript">
+if (typeof jQuery == 'undefined'){
+    document.write(unescape("%3Cscript src='js/jquery-1.9.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+}
+</script>  
+<script type="text/javascript" src="js/jquery.hammer-min.js"></script> 
+<script type="text/javascript" src="js/jquery.flexpanel.js"></script>
+<script type="text/javascript">
+	$('#flexpanel').flexpanel({
+		screenBreak: 1200,
+	});
+</script>
+</body>
+</html>
