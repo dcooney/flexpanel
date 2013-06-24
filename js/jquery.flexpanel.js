@@ -10,21 +10,17 @@
  * Twitter: @KaptonKaos
  */
 
-;(function($) {		
-	
-	$.flexpanel = function(el, options){
-	
-		// default config properties		
-		var defaults = {
-			direction: 'right', // Panel slides in from 'left', 'right' or 'top'.
-			wrapper: '#wrapper', // Define the main content wrapper, this is important as it needs to slide.
-			button: '.flex-btn', // Define the menu button(open/close).
-			maxWidth: null, // Define a minimum screen width, this will help trigger FlexPanel functions.	
-			//panelWidth: 80, // Coming soon - Percent width of the panel, default is 80%.
-			speed: 500, // Speed of the transitions.
-		}; 		
-		var options = $.extend(defaults, options);  	
-		
+(function($) {
+    $.flexpanel = function(el, options) {
+        var defaults = {
+            direction: 'right', // Panel slides in from 'left', 'right' or 'top'.
+            wrapper: '#wrapper', // Define the main content wrapper, this is important as it needs to slide.
+            button: '.flex-btn', // Define the menu button(open/close).
+            maxWidth: null, // Define a minimum screen width, this will help trigger FlexPanel functions.
+            //panelWidth: 80, // Coming soon - Percent width of the panel, default is 80%.
+            speed: 500 // Speed of the transitions.
+        }	
+		var options = $.extend(defaults, options);
 		//Create vars
 		var $flexpanel = $(el),
 			$direction = options.direction,
@@ -33,63 +29,79 @@
 			$maxWidth = options.maxWidth;
 			$panelWidth = options.panelWidth;
 			$speed = options.speed; 
-			$isIOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false );
+			$isIOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false );	
 		
-		//***********************************************
-		// -- Open/Close FlexPanel
-		//***********************************************
-		var SlidePanel = function(e){
-			if($('body').hasClass('flexpanel-active')){			
-				$('.viewport').animate({scrollTop: 0}, 500);
-				$('body').removeClass('flexpanel-active');
-				$('body').unbind('touchmove');
-			}else{
-				$('body').addClass('flexpanel-active');	
-				//Disable body scrolling when nav is active
-				$('body').bind('touchmove', function(e){
-					if($('.viewport nav', $flexpanel).height() < $(window).height()){
-						e.preventDefault();
-					}
-					if (!$(e.target).parents('.viewport')[0]) {
-				        e.preventDefault();
-				    }
-				});			
-			}
-		}	
-		//***********************************************
-		// -- $btn click and anchor navigation
-		//***********************************************
-		
-		//Menu Btn click
-		$btn.click(SlidePanel);
-				
-		//Url with anchors
-		$('nav ul li a', $flexpanel).click(function(){
-			var $el = $(this);
-			var $target = $el.attr('href');
-			if($el.hasClass('anchor')){
-				SlidePanel();
-				var target_offset = $($target).offset();
-				var target_top = target_offset.top;
-				$('html, body').animate({scrollTop:target_top}, $speed);
-			}
-		})
-		
-		//***********************************************
-		// -- Swipe & Touch Events
-		//***********************************************
-		var HammerEvents = function(e){
-			if ($.fn.hammer){//If jquery Hammer is running, use swipe!
-				$($wrapper).add($btn).hammer().on("swipe, drag",function(event) {
+		var methods = {
+            init: function() {
+                //***********************************************
+                // -- FlexPanel Init Functions
+                //***********************************************
+                $('body').addClass('flexpanel-'+$direction);
+    			$flexpanel.append('<div class="cover"/>'); // Add .cover div
+    			$flexpanel.show(); //Display FlexPanel
+    			$btn.addClass('in-view');
+    			if($maxWidth === null || $w <= $maxWidth){
+    				methods.height(); 
+    			}
+    			if ($.fn.hammer){// If hammer.js is running
+    			    methods.touch();
+    			}
+            },   
+            slide: function(e){                
+                //***********************************************
+                // -- Open/Close FlexPanel
+                //***********************************************
+                switch(e){
+                    case 'open':
+                        $('body').addClass('flexpanel-active');	
+        				//Disable body scrolling when nav is active
+        				$('body').bind('touchmove', function(e){
+        					if($('.viewport nav', $flexpanel).height() < $(window).height()){
+        						e.preventDefault();
+        					}
+        					if (!$(e.target).parents('.viewport', $flexpanel)[0]) {
+        				        e.preventDefault();
+        				    }
+        				});	
+                    break;
+                    case 'close':
+                        $('.viewport', $flexpanel).animate({scrollTop: 0}, 500);
+                        $('body').removeClass('flexpanel-active');
+                        $('body').unbind('touchmove');                   
+                    break;
+                    default: 
+                        if($('body').hasClass('flexpanel-active')){			
+            				$('.viewport', $flexpanel).animate({scrollTop: 0}, 500);
+            				$('body').removeClass('flexpanel-active');
+            				$('body').unbind('touchmove');
+            			}else{
+            				$('body').addClass('flexpanel-active');	
+            				//Disable body scrolling when nav is active
+            				$('body').bind('touchmove', function(e){
+            					if($('.viewport nav', $flexpanel).height() < $(window).height()){
+            						e.preventDefault();
+            					}
+            					if (!$(e.target).parents('.viewport', $flexpanel)[0]) {
+            				        e.preventDefault();
+            				    }
+            				});			
+            			}                    
+                }    			
+            },
+            touch: function(){
+                //***********************************************
+                // -- Swipe & Touch Events
+                //***********************************************
+				$('.cover').add($btn).hammer().on("swipe, drag",function(event) {
 					switch($direction){
 						case 'right':
 						if(event.gesture.direction === 'right' && $('body').hasClass('flexpanel-active')){
-							SlidePanel();
+							methods.slide();
 						}
 						break;						
 						case 'left':
 						if(event.gesture.direction === 'left' && $('body').hasClass('flexpanel-active')){
-							SlidePanel();
+							methods.slide();
 						}
 						break;
 					}					
@@ -98,17 +110,16 @@
 					switch($direction){
 						case 'right':
 						if(event.gesture.direction === 'left' && !$('body').hasClass('flexpanel-active')){
-							SlidePanel();
+							methods.slide();
 						}
 						break;						
 						case 'left':
 						if(event.gesture.direction === 'right' && !$('body').hasClass('flexpanel-active')){
-							SlidePanel();
+							methods.slide();
 						}
 						break;
 					}					
-				});
-				
+				});				
 				//Function to determine scroll direction to show/hide nav
 				$('body').hammer().on("dragdown",function(event) {
 					//Determine if the user is attempting to scroll to top by deltaTime
@@ -123,12 +134,46 @@
 					if(event.gesture.deltaTime > 50 && $top > 100){
 			        	$btn.removeClass('in-view');
 			        }
-				});	
-				
+				});					
 				//Lets add drag_lock to the panel. Coming soon
 				//$('body').hammer({ drag_lock_to_axis: true }).on("release dragleft dragright swipeleft swiperight", handleHammer);
-			}	
-		}	
+            },
+            height: function(){
+                //***********************************************
+        		// -- Function to set the height of the nav for 
+        		//    overflow scrolling
+        		//***********************************************
+                //if($isIOS){// If is iOS, add 60px to the window height to account for menubar.
+    				$flexpanel.css('height', $(window).height()+60+'px');
+    				$('.viewport', $flexpanel).css('height', $(window).height()+60+'px');
+    				$('.cover', $flexpanel).css('height', $(window).height()+60+'px');
+    			//}else{		
+    				//$flexpanel.css('height', $(window).height()+'px');
+    				//$('.viewport', $flexpanel).css('height', $(window).height()+'px');
+    				//$('.cover', $flexpanel).css('height', $(window).height()+'px');
+    			//}
+            }
+        }
+		methods.init();
+			
+			
+		//***********************************************
+		// -- $btn click and anchor navigation
+		//***********************************************		
+		//Menu Btn click
+		$btn.click(methods.slide);
+			
+		//Url with anchors
+		$('nav ul li a', $flexpanel).click(function(){
+			var $el = $(this);
+			var $target = $el.attr('href');
+			if($el.hasClass('anchor')){
+				methods.slide();
+				var target_offset = $($target).offset();
+				var target_top = target_offset.top;
+				$('html, body').animate({scrollTop:target_top}, $speed);
+			}
+		});		
 		
 		//***********************************************
 		// -- Add smooth scrolling to the .viewport div 
@@ -142,24 +187,8 @@
 			}else{	
 				$el.removeClass('smooth');
 			}
-		});	
-		
-		//***********************************************
-		// -- Function to set the height of the nav for 
-		//    overflow scrolling
-		//***********************************************
-		var panelHeight = function(){
-			if($isIOS){// If is iOS, add 60px to the window height to account for menubar.
-				$flexpanel.css('height', $(window).height()+60+'px');
-				$('.viewport', $flexpanel).css('height', $(window).height()+60+'px');
-				$('.cover', $flexpanel).css('height', $(window).height()+60+'px');
-			}else{		
-				$flexpanel.css('height', $(window).height()+'px');
-				$('.viewport', $flexpanel).css('height', $(window).height()+'px');
-				$('.cover', $flexpanel).css('height', $(window).height()+'px');
-			}
-		}
-		
+		});		
+				
 		
 		//***********************************************
 		// -- Window Resize Events
@@ -168,10 +197,10 @@
 			$w = $(window).width();
 			//If screen width has not been defined
 			if($maxWidth === null){
-				$(window).resize(panelHeight); 
+				$(window).resize(methods.height); 
 			}else{
 				if($w <= $maxWidth){//If window is less than maxWidth
-					$(window).resize(panelHeight); 
+					$(window).resize(methods.height); 
 				}
 			}
 		});
@@ -187,25 +216,16 @@
 		
 		
 		//***********************************************
-		// -- FlexPanel Init Functions
-		//***********************************************
-		var Init = function(){
-			$('body').addClass('flexpanel-'+$direction);
-			$flexpanel.show(); //Display FLexPanel
-			$btn.addClass('in-view');
-			if($maxWidth === null || $w <= $maxWidth){
-				panelHeight(); 
-			}
-			HammerEvents();
-		}
-		Init();
-		
-		
-		//***********************************************
 		//Public Functions
 		//***********************************************
 		$.fn.flexpanel.toggle=function(){
-			SlidePanel();
+			methods.slide();
+		}
+		$.fn.flexpanel.open=function(){
+			methods.slide('open');
+		}
+		$.fn.flexpanel.close=function(){
+			methods.slide('close');
 		}
 	
 	

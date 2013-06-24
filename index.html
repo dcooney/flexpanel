@@ -54,6 +54,11 @@
           <p>From mobile applications to desktop websites, FlexPanel can handle your navigation.</p>
         </div>
       </section>
+      <section class="feature" id="installation">
+        <h2>Installation</h2>
+        <p>Notes on development and contributing are coming soon. In the meantime, download the source from <a href="https://github.com/dcooney/flexpanel">GitHub</a></p>
+        
+      </section>
       <section class="feature language-javascript" id="usage">
         <h2>Usage</h2>
         <h3>Basic Init Method</h3>
@@ -67,12 +72,20 @@
 	maxWidth: 1200,    
 });</code></pre>
       </section>
+      
       <section class="feature language-javascript" id="public">
         <h2>Public Functions</h2>
-        <h3>Panel Toggle</h3>
-        <p><a class="toggle" href="javascript:void(0);">Toggle</a> the FlexPanel menu(open/close) no just the menu button. <a class="toggle" href="javascript:void(0);">Click me</a></p>
-        <pre><code>$.fn.flexpanel.toggle();</code></pre>
+        <h3>Open <a class="open" href="javascript:void(0);" >Try Me</a></h3>
+        <pre><code>//Open FlexPanel from any element on the screen.
+$.fn.flexpanel.open();</code></pre>
+        <h3>Close <a class="close" href="javascript:void(0);" >Try Me</a></h3>
+        <pre><code>//Close FlexPanel from any element on the screen.
+$.fn.flexpanel.close();</code></pre>
+        <h3>Toggle <a class="toggle" href="javascript:void(0);" >Try Me</a></h3>
+        <pre><code>//Toggle FlexPanel Open/Close.
+$.fn.flexpanel.toggle();</code></pre>
       </section>
+      
       <section class="feature language-javascript" id="configuration">
         <h2>Configuration</h2>
         <p>FlexPanel accepts the following configuration parameters...</p>
@@ -109,6 +122,7 @@
             <li class="active"><a class="anchor" href="#wrapper">FlexPanel</a>
               <ul>
                 <li><a class="anchor" href="#features">Features</a></li>
+                <li><a class="anchor" href="#installation">Installation</a></li>
                 <li><a class="anchor" href="#usage">Usage</a></li>
                 <li><a class="anchor" href="#public">Public Functions</a></li>
                 <li><a class="anchor" href="#configuration">Configuration</a></li>
@@ -145,7 +159,13 @@ if (typeof jQuery == 'undefined'){
 	});
 	$('a.toggle').click(function(){
 		$.fn.flexpanel.toggle();
-	})
+	});
+	$('a.close').click(function(){
+		$.fn.flexpanel.close();
+	});
+	$('a.open').click(function(){
+		$.fn.flexpanel.open();
+	});
 </script>
 </body>
 </html>
