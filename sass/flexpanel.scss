@@ -1,11 +1,24 @@
+/*
+ * jQuery FlexPanel v1
+ * https://github.com/dcooney/flexpanel
+ *
+ * Copyright 2013 Connekt Media - http://cnkt.ca/flexpanel
+ * Free to use under the GPLv2 license.
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Author: Darren Cooney 
+ * Twitter: @KaptonKaos
+ */
+ 
+ 
 @import "_functions";
-
 
 #container,
 #wrapper {
 	width: 100%;
 	position: relative;		
 }
+
 #wrapper{
 	left:0;	
 	-webkit-transform: translate3d(0,0,0);
@@ -17,48 +30,27 @@
 	-moz-transition: -moz-transform .45s ease;
 	transition: transform .45s ease;
 	div.inner{
-		padding:20px 40px 40px;
+		padding:0 30px 0;
 	} 
 }	
 
 
-// ----------------------------------- //
-// FlexPanel Active States
-// ----------------------------------- //
-body.flexpanel-active{
-	#wrapper{		
-		-moz-transform: translate(-75%, 0);
-		-webkit-transform: translate(-75%, 0);
-		transform: translate(-75%, 0);
-	}		 
-	
-	#flexpanel{
-		-moz-transform: translate(-100%, 0);
-		-webkit-transform: translate(-100%, 0);
-		transform: translate(-100%, 0);
-		.cover{
-			display:block;
-		}
-		.viewport-wrap nav ul{
-			-moz-transform: scale(1);
-			-webkit-transform: scale(1);
-			transform: scale(1);			
-		}
-	}
-}
+
+
  
-// ----------------------------------- //
-// Panel Navigation
-// ----------------------------------- //
-#flexpanel{	
-	display: block;
-	width:84%;
-	height:auto;
-	padding: 0;
-	z-index: 1;
+//***********************************************
+// -- FlexPanel Styles
+//***********************************************
+.flexpanel{	
 	position: fixed;
 	top:0;		
-	right:-84%;
+	right:-80%;
+	width:80%;
+	background: #444;	
+	height:auto;
+	display:none;
+	padding: 0;
+	z-index: 1;
 	-webkit-transform: translate3d(0,0,0);
 	-moz-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0); 	
@@ -66,33 +58,24 @@ body.flexpanel-active{
 	-webkit-backface-visibility: hidden;
 	-webkit-transform-style: preserve-3d;	
 	@include transition(all .45s ease);
-	background: #444;	
 	.wrap {
 		overflow: hidden;
 	}
-	.viewport-wrap{
-		width:100%;
-		height:auto;
-		position: relative;
-		height:100%;
-		display: block;
-	}
-	.cover{
-		width:30%;
-		position: absolute;
-		left:-30%;
-		top:0;
-		background: rgba(255, 255, 255, 0.5);
-		display: none;
-		height:200px;
-	}
+	//Menu Button
 	.flex-btn{
 		width:40px;
 		height:40px;
 		position: absolute;
-		left:-48px;
-		top:20px;
+		left:-44px;
+		top:22px;
 		z-index:9;
+		opacity: 0;
+		filter: alpha(opacity = 0);	
+		@include transition(all .45s ease);
+		&.in-view{
+			opacity: 1;
+			filter: alpha(opacity = 100);
+		}
 		span{
 			width:40px;
 			height:40px;		
@@ -110,39 +93,40 @@ body.flexpanel-active{
 		}
 	}
 	
+	//Viewport, Do not remove this element
 	.viewport{
 		height:auto;
 		width:100%;
 		position: relative;
-		padding: 0 0 0;			
+		padding: 0;			
 		overflow: hidden;			
 		overflow-y: auto;	
+		@include box-sizing;
 		&.smooth{
-			-webkit-overflow-scrolling: touch;
+			// Add smooth scroll to webkit browsers <- This is a big deal
+			-webkit-overflow-scrolling: touch; 
 		}		
 	}	
-	
 	nav{
-		display: block;
-		clear: both;
-		padding:0;				
-		background: #333;		
-		ul{
+		padding: 0 0 50px;	
+		ul{		
+			display: block;
+			clear: both;			
+			background: #333;
 			padding:0;
-			margin:0;				
-			-moz-transform: scale(0.9);
-			-webkit-transform: scale(0.9);
-			transform: scale(0.9);
+			margin:0;
+			@include transform(scale(0.9));
 			@include transition(all .45s ease);			
 			li{
 				margin:0;
 				padding:0;
 				clear: both;
+				list-style: none;
 				width: auto;
 				display: block;
 				font-size:18px;
 				border-top: 1px solid #444;
-				border-bottom: 1px solid #000;
+				border-bottom: 1px solid #111;
 				&:first-child{
 					border-top:none;
 				}
@@ -182,7 +166,7 @@ body.flexpanel-active{
 				}
 				&.active > a{				
 					color:#66c9cd !important;
-					background: #222 !important;;
+					background: #222 !important;
 					font-weight: bold;
 				}
 				&.active{
@@ -193,13 +177,59 @@ body.flexpanel-active{
 	}
 }
 
-.social{
-	margin:20px;
-	height:auto;
-	overflow: hidden;
-	display: block;
-	clear: both;
+//***********************************************
+// -- Right Align - Active State
+//***********************************************
+body.flexpanel-active{
+	#wrapper{		
+		-moz-transform: translate(-75%, 0);
+		-webkit-transform: translate(-75%, 0);
+		transform: translate(-75%, 0);
+	}		 
+	
+	.flexpanel{
+		-moz-transform: translate(-100%, 0);
+		-webkit-transform: translate(-100%, 0);
+		transform: translate(-100%, 0);
+		.flex-btn{
+			opacity: 1 !important;
+			filter: alpha(opacity = 100) !important;
+		}
+		.viewport nav ul{
+			-moz-transform: scale(1);
+			-webkit-transform: scale(1);
+			transform: scale(1);			
+		}
+	}
 }
+
+//***********************************************
+// -- Left Align
+//***********************************************
+body.flexpanel-left .flexpanel{	
+	right:auto;
+	left:-80%;
+	.flex-btn{		
+		left:auto;
+		right:-48px;
+	}
+}
+
+body.flexpanel-left.flexpanel-active{
+	#wrapper{		
+		-moz-transform: translate(75%, 0);
+		-webkit-transform: translate(75%, 0);
+		transform: translate(75%, 0);
+	}		 
+	
+	.flexpanel{
+		-moz-transform: translate(100%, 0);
+		-webkit-transform: translate(100%, 0);
+		transform: translate(100%, 0);
+	}
+}
+
+
 
 
 	

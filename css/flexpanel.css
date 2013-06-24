@@ -1,3 +1,14 @@
+/*
+ * jQuery FlexPanel v1
+ * https://github.com/dcooney/flexpanel
+ *
+ * Copyright 2013 Connekt Media - http://cnkt.ca/flexpanel
+ * Free to use under the GPLv2 license.
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Author: Darren Cooney 
+ * Twitter: @KaptonKaos
+ */
 #container,
 #wrapper {
   width: 100%;
@@ -16,37 +27,19 @@
   transition: transform .45s ease;
 }
 #wrapper div.inner {
-  padding: 20px 40px 40px;
+  padding: 0 30px 0;
 }
 
-body.flexpanel-active #wrapper {
-  -moz-transform: translate(-75%, 0);
-  -webkit-transform: translate(-75%, 0);
-  transform: translate(-75%, 0);
-}
-body.flexpanel-active #flexpanel {
-  -moz-transform: translate(-100%, 0);
-  -webkit-transform: translate(-100%, 0);
-  transform: translate(-100%, 0);
-}
-body.flexpanel-active #flexpanel .cover {
-  display: block;
-}
-body.flexpanel-active #flexpanel .viewport-wrap nav ul {
-  -moz-transform: scale(1);
-  -webkit-transform: scale(1);
-  transform: scale(1);
-}
-
-#flexpanel {
-  display: block;
-  width: 84%;
-  height: auto;
-  padding: 0;
-  z-index: 1;
+.flexpanel {
   position: fixed;
   top: 0;
-  right: -84%;
+  right: -80%;
+  width: 80%;
+  background: #444;
+  height: auto;
+  display: none;
+  padding: 0;
+  z-index: 1;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
@@ -56,36 +49,28 @@ body.flexpanel-active #flexpanel .viewport-wrap nav ul {
   -webkit-transition: all 0.45s ease;
   -moz-transition: all 0.45s ease;
   transition: all 0.45s ease;
-  background: #444;
 }
-#flexpanel .wrap {
+.flexpanel .wrap {
   overflow: hidden;
 }
-#flexpanel .viewport-wrap {
-  width: 100%;
-  height: auto;
-  position: relative;
-  height: 100%;
-  display: block;
-}
-#flexpanel .cover {
-  width: 30%;
-  position: absolute;
-  left: -30%;
-  top: 0;
-  background: rgba(255, 255, 255, 0.5);
-  display: none;
-  height: 200px;
-}
-#flexpanel .flex-btn {
+.flexpanel .flex-btn {
   width: 40px;
   height: 40px;
   position: absolute;
-  left: -48px;
-  top: 20px;
+  left: -44px;
+  top: 22px;
   z-index: 9;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 0.45s ease;
+  -moz-transition: all 0.45s ease;
+  transition: all 0.45s ease;
 }
-#flexpanel .flex-btn span {
+.flexpanel .flex-btn.in-view {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.flexpanel .flex-btn span {
   width: 40px;
   height: 40px;
   background: url(../images/btn-menu-black.png) no-repeat center center;
@@ -98,102 +83,145 @@ body.flexpanel-active #flexpanel .viewport-wrap nav ul {
   border-radius: 4px;
   cursor: pointer;
 }
-#flexpanel .flex-btn span:hover {
+.flexpanel .flex-btn span:hover {
   background-color: #ccc;
 }
-#flexpanel .flex-btn span:active {
+.flexpanel .flex-btn span:active {
   -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.25);
   box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.25);
 }
-#flexpanel .viewport {
+.flexpanel .viewport {
   height: auto;
   width: 100%;
   position: relative;
-  padding: 0 0 0;
+  padding: 0;
   overflow: hidden;
   overflow-y: auto;
+  -webkit-box-sizing: border-box;
+  /* webkit */
+  -khtml-box-sizing: border-box;
+  /* konqueror */
+  -moz-box-sizing: border-box;
+  /* firefox */
+  -ms-box-sizing: border-box;
+  /* ie */
+  box-sizing: border-box;
+  /* css3 */
 }
-#flexpanel .viewport.smooth {
+.flexpanel .viewport.smooth {
   -webkit-overflow-scrolling: touch;
 }
-#flexpanel nav {
+.flexpanel nav {
+  padding: 0 0 50px;
+}
+.flexpanel nav ul {
   display: block;
   clear: both;
-  padding: 0;
   background: #333;
-}
-#flexpanel nav ul {
   padding: 0;
   margin: 0;
-  -moz-transform: scale(0.9);
   -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
   transform: scale(0.9);
   -webkit-transition: all 0.45s ease;
   -moz-transition: all 0.45s ease;
   transition: all 0.45s ease;
 }
-#flexpanel nav ul li {
+.flexpanel nav ul li {
   margin: 0;
   padding: 0;
   clear: both;
+  list-style: none;
   width: auto;
   display: block;
   font-size: 18px;
   border-top: 1px solid #444;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #111;
 }
-#flexpanel nav ul li:first-child {
+.flexpanel nav ul li:first-child {
   border-top: none;
 }
-#flexpanel nav ul li ul {
+.flexpanel nav ul li ul {
   margin: 5px 20px 20px;
   border: none;
 }
-#flexpanel nav ul li ul li {
+.flexpanel nav ul li ul li {
   font-size: 15px;
   margin: 2px 0;
   border: none;
 }
-#flexpanel nav ul li ul li a {
+.flexpanel nav ul li ul li a {
   padding: 10px 14px;
   background: #444;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
-#flexpanel nav ul li ul li a:active {
+.flexpanel nav ul li ul li a:active {
   background: #2f2f2f;
   -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.25);
   box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.25);
 }
-#flexpanel nav ul li a {
+.flexpanel nav ul li a {
   padding: 10px 20px;
   display: block;
   color: #fff;
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-#flexpanel nav ul li a:active {
+.flexpanel nav ul li a:active {
   background: #232323;
   -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.25);
   box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.25);
 }
-#flexpanel nav ul li.active > a {
+.flexpanel nav ul li.active > a {
   color: #66c9cd !important;
   background: #222 !important;
   font-weight: bold;
 }
-#flexpanel nav ul li.active {
+.flexpanel nav ul li.active {
   background: #222;
 }
 
-.social {
-  margin: 20px;
-  height: auto;
-  overflow: hidden;
-  display: block;
-  clear: both;
+body.flexpanel-active #wrapper {
+  -moz-transform: translate(-75%, 0);
+  -webkit-transform: translate(-75%, 0);
+  transform: translate(-75%, 0);
+}
+body.flexpanel-active .flexpanel {
+  -moz-transform: translate(-100%, 0);
+  -webkit-transform: translate(-100%, 0);
+  transform: translate(-100%, 0);
+}
+body.flexpanel-active .flexpanel .flex-btn {
+  opacity: 1 !important;
+  filter: alpha(opacity=100) !important;
+}
+body.flexpanel-active .flexpanel .viewport nav ul {
+  -moz-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+body.flexpanel-left .flexpanel {
+  right: auto;
+  left: -80%;
+}
+body.flexpanel-left .flexpanel .flex-btn {
+  left: auto;
+  right: -48px;
+}
+
+body.flexpanel-left.flexpanel-active #wrapper {
+  -moz-transform: translate(75%, 0);
+  -webkit-transform: translate(75%, 0);
+  transform: translate(75%, 0);
+}
+body.flexpanel-left.flexpanel-active .flexpanel {
+  -moz-transform: translate(100%, 0);
+  -webkit-transform: translate(100%, 0);
+  transform: translate(100%, 0);
 }

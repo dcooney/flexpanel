@@ -1,4 +1,4 @@
 flexpanel
 =========
 
-A Responsive Panel Navigation for Mobile and Desktop
+A responsive scrolling panel navigation for mobile and desktop

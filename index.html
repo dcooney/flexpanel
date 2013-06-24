@@ -2,11 +2,12 @@
 <html lang="en" class="no-js">
 <!--<![endif]-->
 <head>
-<title>FlexPanel - A Responsive Panel Navigation for Mobile and Desktop</title>
+<title>FlexPanel - A scrolling panel navigation for mobile and desktop</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, maximum-scale=1 user-scalable=no" />
 <link rel="stylesheet" href="css/base.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/flexpanel.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="prism/prism.css" type="text/css" media="screen" />
 <!--[if lt IE 9]>
 	<link href="css/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
 <![endif]-->
@@ -17,62 +18,134 @@
 </head>
 <body>
 <div id="container">
-	
-  
-  <div id="wrapper">
-	<div class="inner">
-		<h1>Panel Navigation</h1>
-		<img src="images/beach.jpg" class="aligncenter">
-		<p>This responsive navigation Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-		<h2>A Responsive Panel Navigation for Mobile and Desktop</h2>
-		<p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-	</div>
-  </div>
-  <div id="flexpanel">
-      <div class="flex-btn"><span>Menu</span></div>
-      <div class="viewport-wrap">
-        <div class="viewport scrollable">
-          <nav>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li class="active"><a href="#">Work</a>
-              	<ul>
-		              <li><a href="#">Design</a></li>
-		              <li><a href="#">Development</a></li>
-		              <li><a href="#">iOS Apps</a></li>
-		              <li><a href="#">Mac App</a></li>
-		              <li><a href="#">Print</a></li>
-		              <li><a href="#">Archives</a></li>
-	              </ul>
-              </li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Shop</a></li>
-              <li><a href="/">Services</a></li>
-              <li><a href="/">About</a></li>
-              <li><a href="/">Careers</a></li>
-              <li><a href="/">Contact</a></li>
-            </ul>
-          </nav>
-          <section class="social">
-          	<a href="https://twitter.com/KaptonKaos" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @KaptonKaos</a>
+  <article id="wrapper">
+    <div class="inner">
+      <header class="main">
+        <h1>FlexPanel</h1>
+        <h3>A scrolling panel navigation for mobile and desktop</h3>
+      </header>
+      <section class="banner"> <img src="images/beach.jpg" class="aligncenter"> <a id="fork" href="https://github.com/dcooney/flexpanel" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a> </section>
+      <div style="overflow:hidden; text-align:center; padding:5px 10px 10px;">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="KaptonKaos" data-size="large" data-hashtags="flexpanel">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-          </section>
+      
+      <a href="https://twitter.com/KaptonKaos" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @KaptonKaos</a> 
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> 
+      </div>
+      <div class="highlight" id="download">
+        <p><a href="https://github.com/dcooney/flexpanel">FlexPanel</a> is a jQuery/CSS3 plugin for creating a scrollable, sliding panel  navigation system.</p>
+        <p class="btn"><a href="https://github.com/dcooney/flexpanel/archive/master.zip">Download</a></p>
+      </div>
+      <section class="feature" id="features">
+        <h2>Features</h2>
+        <div class="one_third">
+          <h3>Swipe Controls</h3>
+          <p><img src="images/icon-swipe.gif" alt="Swipe Controls"></p>
+          <p>With the help of <a href="http://eightmedia.github.io/hammer.js/" target="_blank">hammer.js</a> you can swipe to interact with the Flexpanel menu.</p>
         </div>
-      </div>   
-  </div>
+        <div class="one_third">
+          <h3>CSS3 Animations</h3>
+          <p><img src="images/icon-css3.gif" alt="CSS3"></p>
+          <p>There are no jQuery animations here. All animations are controlled by CSS3 properties.</p>
+        </div>
+        <div class="one_third">
+          <h3>Fully Responsive</h3>
+          <p><img src="images/icon-resposnive.gif" alt="Fully Responsive"></p>
+          <p>From mobile applications to desktop websites, FlexPanel can handle your navigation.</p>
+        </div>
+      </section>
+      <section class="feature language-javascript" id="usage">
+        <h2>Usage</h2>
+        <h3>Basic Init Method</h3>
+        <p>FlexPanel's initiate method in it's most simplest form.</p>
+        <pre><code>$('.flexpanel').flexpanel();</code></pre>
+	<h3>Advanced Method</h3>
+    <p>Passing configuration paramaters to FlexPanel. <a class="anchor" href="#configuration">More info</a>.</p>
+        <pre><code>$('.flexpanel').flexpanel({
+    wrapper: '#wrapper',
+    button: '.flex-btn',
+	maxWidth: 1200,    
+});</code></pre>
+      </section>
+      <section class="feature language-javascript" id="public">
+        <h2>Public Functions</h2>
+        <h3>Panel Toggle</h3>
+        <p><a class="toggle" href="javascript:void(0);">Toggle</a> the FlexPanel menu(open/close) no just the menu button. <a class="toggle" href="javascript:void(0);">Click me</a></p>
+        <pre><code>$.fn.flexpanel.toggle();</code></pre>
+      </section>
+      <section class="feature language-javascript" id="configuration">
+        <h2>Configuration</h2>
+        <p>FlexPanel accepts the following configuration parameters...</p>
+        <pre><code>{
+    direction: 'right', // Panel slides in from 'left', 'right' or 'top'.
+	wrapper: '#wrapper', // Define the main content wrapper.
+	button: '.flex-btn', // Define the menu button.
+	maxWidth: null, // Define a minimum screen width, this will help trigger FlexPanel functions.	
+	//panelWidth: 80, // Coming soon - Percent width of the panel, default is 80%.
+	speed: 500, // Define transition for CSS3 fallback.
+}
+        </code></pre>
+      </section>
+      <section class="feature" id="examples">
+        <h2>Examples</h2>
+        <p>FlexPanel Examples are coming soon.</p>
+      </section>
+      <section class="feature" id="development">
+        <h2>Development</h2>
+        <p>Notes on development and contributing are coming soon. In the meantime, download the source from <a href="https://github.com/dcooney/flexpanel">GitHub</a></p>
+        
+      </section>
+      
+      <section class="copyright">      
+      	<p>Developed by <a href="https://twitter.com/KaptonKaos">Darren Cooney</a> for <a href="http://cnkt.ca">Connekt Media</a></p>
+      </section>
+    </div>
+  </article>
+  <section class="flexpanel">
+    <div class="flex-btn"><span>Menu</span></div>
+      <div class="viewport">
+        <nav>
+          <ul>
+            <li class="active"><a class="anchor" href="#wrapper">FlexPanel</a>
+              <ul>
+                <li><a class="anchor" href="#features">Features</a></li>
+                <li><a class="anchor" href="#usage">Usage</a></li>
+                <li><a class="anchor" href="#public">Public Functions</a></li>
+                <li><a class="anchor" href="#configuration">Configuration</a></li>
+                <li><a class="anchor" href="#examples">Examples</a></li>
+                <li><a class="anchor" href="#development">Development</a></li>
+              </ul>
+            </li>
+            <li><a href="https://github.com/dcooney/flexpanel">Download</a></li>
+            <li><a href="mailto:darren.cooney@gmail.com?subject=FlexPanel">Contact</a></li>
+          </ul>
+          <div class="social">       
+          	<a href="https://twitter.com/share" class="twitter-share-button" data-via="KaptonKaos" data-size="large" data-hashtags="flexpanel">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      
+      		<a href="https://twitter.com/KaptonKaos" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @KaptonKaos</a> 
+      		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> 
+          </div>
+        </nav>       
+    </div>
+  </section>
 </div>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript">
 if (typeof jQuery == 'undefined'){
     document.write(unescape("%3Cscript src='js/jquery-1.9.1.min.js' type='text/javascript'%3E%3C/script%3E"));
 }
-</script>  
+</script> 
 <script type="text/javascript" src="js/jquery.hammer-min.js"></script> 
-<script type="text/javascript" src="js/jquery.flexpanel.js"></script>
+<script type="text/javascript" src="js/jquery.flexpanel.js"></script> 
+<script type="text/javascript" src="prism/prism.js"></script> 
 <script type="text/javascript">
-	$('#flexpanel').flexpanel({
-		screenBreak: 1200,
+	$('.flexpanel').flexpanel({
+		direction : 'right',
 	});
+	$('a.toggle').click(function(){
+		$.fn.flexpanel.toggle();
+	})
 </script>
 </body>
 </html>
