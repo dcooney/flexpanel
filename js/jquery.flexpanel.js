@@ -54,37 +54,26 @@
                 switch(e){
                     case 'open':
                         $('body').addClass('flexpanel-active');	
-        				//Disable body scrolling when nav is active
-        				$('body').bind('touchmove', function(e){
-        					if($('.viewport nav', $flexpanel).height() < $(window).height()){
-        						e.preventDefault();
-        					}
-        					if (!$(e.target).parents('.viewport', $flexpanel)[0]) {
-        				        e.preventDefault();
-        				    }
-        				});	
+                        $(document).on('touchmove',function(e){
+						  e.preventDefault();
+						});
                     break;
                     case 'close':
                         $('.viewport', $flexpanel).animate({scrollTop: 0}, 500);
-                        $('body').removeClass('flexpanel-active');
-                        $('body').unbind('touchmove');                   
+                        $('body').removeClass('flexpanel-active'); 
+                        $(document).on('touchmove',function(e){
+							  return true;
+							});               
                     break;
                     default: 
                         if($('body').hasClass('flexpanel-active')){			
             				$('.viewport', $flexpanel).animate({scrollTop: 0}, 500);
             				$('body').removeClass('flexpanel-active');
-            				$('body').unbind('touchmove');
+            				$(document).on('touchmove',function(e){
+							  return true;
+							});  
             			}else{
-            				$('body').addClass('flexpanel-active');	
-            				//Disable body scrolling when nav is active
-            				$('body').bind('touchmove', function(e){
-            					if($('.viewport nav', $flexpanel).height() < $(window).height()){
-            						e.preventDefault();
-            					}
-            					if (!$(e.target).parents('.viewport', $flexpanel)[0]) {
-            				        e.preventDefault();
-            				    }
-            				});			
+            				$('body').addClass('flexpanel-active');	           				         						
             			}                    
                 }    			
             },
@@ -159,6 +148,34 @@
 		methods.init();
 			
 			
+			
+		//***********************************************
+		// --  Allow scrolling for .viewport div only.
+		//***********************************************
+		
+		$(document).on('touchmove',function(e){
+			if($('body').hasClass('flexpanel-active')){
+				e.preventDefault();
+			}
+		}); 
+		
+		$('body').on('touchstart','.viewport',function(e) {
+			if (e.currentTarget.scrollTop === 0) {
+				e.currentTarget.scrollTop = 1;
+			} else if (e.currentTarget.scrollHeight === e.currentTarget.scrollTop + e.currentTarget.offsetHeight) {
+				e.currentTarget.scrollTop -= 1;
+			}
+		});
+		//***********************************************
+		// -- prevents preventDefault from being called 
+		//    on document if it sees a scrollable div
+		//***********************************************
+		$('body').on('touchmove','.viewport',function(e) {
+			e.stopPropagation();
+		});
+
+
+		
 		//***********************************************
 		// -- $btn click and anchor navigation
 		//***********************************************		

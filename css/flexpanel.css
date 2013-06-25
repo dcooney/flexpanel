@@ -33,7 +33,6 @@
   right: -80%;
   width: 80%;
   height: auto;
-  display: none;
   padding: 0;
   margin: 0;
   z-index: 0;
@@ -54,7 +53,7 @@
   transition: transform .5s ease;
 }
 .flexpanel .flex-btn {
-  width: 400px;
+  width: 40px;
   height: 40px;
   position: absolute;
   left: -44px;
@@ -211,6 +210,9 @@ body.flexpanel-active .viewport-wrap {
   -moz-transform: translate(-100%, 0);
   -webkit-transform: translate(-100%, 0);
   transform: translate(-100%, 0);
+}
+body.flexpanel-active .viewport-wrap .viewport {
+  overflow: scroll;
 }
 body.flexpanel-active .viewport-wrap .flex-btn {
   opacity: 1 !important;

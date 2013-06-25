@@ -40,7 +40,6 @@
 	right:-80%;
 	width:80%;	
 	height:auto;
-	display:none;
 	padding: 0;
 	margin: 0;
 	z-index: 0;
@@ -64,7 +63,7 @@
 	
 	//Menu Button
 	.flex-btn{
-		width:400px;
+		width:40px;
 		height:40px;
 		position: absolute;
 		left:-44px;
@@ -187,7 +186,7 @@
 // -- Right Align - Active State
 //***********************************************
 body.flexpanel-active{
-	
+
 	#wrapper{		
 		-moz-transform: translate(-75%, 0);
 		-webkit-transform: translate(-75%, 0);
@@ -205,6 +204,9 @@ body.flexpanel-active{
 		-moz-transform: translate(-100%, 0);
 		-webkit-transform: translate(-100%, 0);
 		transform: translate(-100%, 0);	
+		.viewport{
+			overflow: scroll;
+		}
 		.flex-btn{
 			opacity: 1 !important;
 			filter: alpha(opacity = 100) !important;
