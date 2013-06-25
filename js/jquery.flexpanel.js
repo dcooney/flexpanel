@@ -106,7 +106,8 @@
 						break;
 					}					
 				});	
-				$btn.hammer().on("swipe, drag",function(event) {
+				$wrapper.add($btn).hammer().on("swipe, drag",function(event) {
+					//$wrapper and $btn swipe events
 					switch($direction){
 						case 'right':
 						if(event.gesture.direction === 'left' && !$('body').hasClass('flexpanel-active')){
