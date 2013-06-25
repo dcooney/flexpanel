@@ -27,9 +27,9 @@
 			$wrapper = $(options.wrapper),
 			$btn = $(options.button),
 			$maxWidth = options.maxWidth;
-			$panelWidth = options.panelWidth;
-			$speed = options.speed; 
-			$isIOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false );	
+			//$panelWidth = options.panelWidth,
+			$speed = options.speed,
+			$isMobile = ('ontouchstart' in window);//( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false );	
 		
 		var methods = {
             init: function() {
@@ -143,15 +143,16 @@
         		// -- Function to set the height of the nav for 
         		//    overflow scrolling
         		//***********************************************
-                //if($isIOS){// If is iOS, add 60px to the window height to account for menubar.
+        		
+                if($isMobile){// If is iOS, add 60px to the window height to account for menubar.
     				$flexpanel.css('height', $(window).height()+60+'px');
     				$('.viewport', $flexpanel).css('height', $(window).height()+60+'px');
     				$('.cover', $flexpanel).css('height', $(window).height()+60+'px');
-    			//}else{		
-    				//$flexpanel.css('height', $(window).height()+'px');
-    				//$('.viewport', $flexpanel).css('height', $(window).height()+'px');
-    				//$('.cover', $flexpanel).css('height', $(window).height()+'px');
-    			//}
+    			}else{		
+    				$flexpanel.css('height', $(window).height()+'px');
+    				$('.viewport', $flexpanel).css('height', $(window).height()+'px');
+    				$('.cover', $flexpanel).css('height', $(window).height()+'px');
+    			}
             }
         }
 		methods.init();
