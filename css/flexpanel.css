@@ -22,9 +22,9 @@
   transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
-  -webkit-transition: -webkit-transform .5s ease;
-  -moz-transition: -moz-transform .5s ease;
-  transition: transform .5s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .flexpanel {
@@ -35,10 +35,14 @@
   height: auto;
   padding: 0;
   margin: 0;
-  z-index: 0;
+  z-index: 1;
+  display: block;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform .5s ease;
+  -moz-transition: -moz-transform .5s ease;
+  transition: transform .5s ease;
 }
 .flexpanel .viewport-wrap {
   position: relative;
@@ -58,6 +62,18 @@
   position: absolute;
   left: -44px;
   top: 20px;
+  z-index: 9;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -moz-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+  -webkit-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  transition: all 0.35s ease;
 }
 .flexpanel .flex-btn.in-view {
   opacity: 1;
@@ -89,7 +105,6 @@
   position: absolute;
   left: 0%;
   top: 0;
-  background: rgba(255, 255, 255, 0.3);
   display: none;
   height: auto;
   z-index: -1;
@@ -197,7 +212,8 @@ body.flexpanel-active #wrapper {
   -moz-transform: translate(-75%, 0);
   -webkit-transform: translate(-75%, 0);
   transform: translate(-75%, 0);
-  /* left: -80%; */
+  opacity: 0.4;
+  filter: alpha(opacity=40);
 }
 body.flexpanel-active .flexpanel {
   right: -80%;
@@ -210,9 +226,6 @@ body.flexpanel-active .viewport-wrap {
   -moz-transform: translate(-100%, 0);
   -webkit-transform: translate(-100%, 0);
   transform: translate(-100%, 0);
-}
-body.flexpanel-active .viewport-wrap .viewport {
-  overflow: scroll;
 }
 body.flexpanel-active .viewport-wrap .flex-btn {
   opacity: 1 !important;
@@ -243,7 +256,69 @@ body.flexpanel-left.flexpanel-active #wrapper {
   transform: translate(75%, 0);
 }
 body.flexpanel-left.flexpanel-active .flexpanel {
+  right: auto;
+  left: -80%;
+}
+body.flexpanel-left.flexpanel-active .flexpanel .cover {
+  display: block;
+  left: 130%;
+}
+body.flexpanel-left.flexpanel-active .viewport-wrap {
   -moz-transform: translate(100%, 0);
   -webkit-transform: translate(100%, 0);
   transform: translate(100%, 0);
+}
+
+body.flexpanel-top .flexpanel {
+  right: auto;
+  left: 0;
+  width: 100% !important;
+  -moz-transform: translate(0, -100%);
+  -webkit-transform: translate(0, -100%);
+  transform: translate(0, -100%);
+}
+body.flexpanel-top .flexpanel .flex-btn {
+  top: auto;
+  left: 20px;
+  bottom: -40px;
+}
+body.flexpanel-top .flexpanel .cover {
+  left: auto;
+  right: auto;
+}
+body.flexpanel-top .flexpanel .viewport-wrap {
+  width: 100%;
+  -moz-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+body.flexpanel-top .flexpanel .viewport {
+  -webkit-border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  -webkit-box-shadow: 0 3px 2px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 3px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.25);
+}
+
+body.flexpanel-top.flexpanel-active #wrapper {
+  -moz-transform: translate(0, 200px);
+  -webkit-transform: translate(0, 200px);
+  transform: translate(0, 200px);
+}
+body.flexpanel-top.flexpanel-active .flexpanel {
+  right: auto;
+  left: auto;
+  -moz-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+body.flexpanel-top.flexpanel-active .flexpanel .cover {
+  display: block;
+  left: auto;
+}
+body.flexpanel-top.flexpanel-active .viewport-wrap {
+  -moz-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
 }

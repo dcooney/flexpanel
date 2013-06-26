@@ -38,10 +38,11 @@
                 //***********************************************
                 $('body').addClass('flexpanel-'+$direction);
     			$flexpanel.append('<div class="cover"/>'); // Add .cover div
-    			$flexpanel.show(); //Display FlexPanel
     			$btn.addClass('in-view');
+    			$w = $(window).width();
     			if($maxWidth === null || $w <= $maxWidth){
     				methods.height(); 
+    				$flexpanel.show(); //Display FlexPanel
     			}
     			if ($.fn.hammer){// If hammer.js is running
     			    methods.touch();
@@ -54,9 +55,6 @@
                 switch(e){
                     case 'open':
                         $('body').addClass('flexpanel-active');	
-                        $(document).on('touchmove',function(e){
-						  e.preventDefault();
-						});
                     break;
                     case 'close':
                         $('.viewport', $flexpanel).animate({scrollTop: 0}, 500);
@@ -73,7 +71,7 @@
 							  return true;
 							});  
             			}else{
-            				$('body').addClass('flexpanel-active');	           				         						
+            				$('body').addClass('flexpanel-active');	    		         						
             			}                    
                 }    			
             },
@@ -135,13 +133,32 @@
         		//***********************************************
         		
                 if($isMobile){// If is iOS, add 60px to the window height to account for menubar.
-    				$flexpanel.css('height', $(window).height()+60+'px');
-    				$('.viewport', $flexpanel).css('height', $(window).height()+60+'px');
-    				$('.cover', $flexpanel).css('height', $(window).height()+60+'px');
-    			}else{		
-    				$flexpanel.css('height', $(window).height()+'px');
-    				$('.viewport', $flexpanel).css('height', $(window).height()+'px');
-    				$('.cover', $flexpanel).css('height', $(window).height()+'px');
+                	switch($direction){
+                		case 'top':
+                			$flexpanel.css('height', $(window).height()-60+'px');
+                			$('.viewport', $flexpanel).css('height', $(window).height()-60+'px');
+                			$('.cover', $flexpanel).css('height', $(window).height()-60+'px');
+                		break;
+                		default:  
+                			$flexpanel.css('height', $(window).height()+60+'px');
+                			$('.viewport', $flexpanel).css('height', $(window).height()+60+'px');
+                			$('.cover', $flexpanel).css('height', $(window).height()+60+'px');
+                		break;
+    				}
+    			}else{	
+    				switch($direction){
+                		case 'top':
+                			$flexpanel.css('height', $(window).height()-60+'px');
+                			$('.viewport', $flexpanel).css('height', $(window).height()-60+'px');
+                			$('.cover', $flexpanel).css('height', $(window).height()-60+'px');
+                		break;
+                		default:  
+                			$flexpanel.css('height', $(window).height()+'px');
+                			$('.viewport', $flexpanel).css('height', $(window).height()+'px');
+                			$('.cover', $flexpanel).css('height', $(window).height()+'px');
+                		break;
+    				}	
+    				
     			}
             }
         }
@@ -151,8 +168,7 @@
 			
 		//***********************************************
 		// --  Allow scrolling for .viewport div only.
-		//***********************************************
-		
+		//***********************************************		
 		$(document).on('touchmove',function(e){
 			if($('body').hasClass('flexpanel-active')){
 				e.preventDefault();
@@ -173,15 +189,28 @@
 		$('body').on('touchmove','.viewport',function(e) {
 			e.stopPropagation();
 		});
-
-
+		
+		//Stop desktop mousewheel
+		$('.viewport').bind('mousewheel DOMMouseScroll', function(e) {
+		    var scrollTo = null;		
+		    if (e.type == 'mousewheel') {
+		        scrollTo = (e.originalEvent.wheelDelta * -1);
+		    }
+		    else if (e.type == 'DOMMouseScroll') {
+		        scrollTo = 40 * e.originalEvent.detail;
+		    }		
+		    if (scrollTo) {
+		        e.preventDefault();
+		        $(this).scrollTop(scrollTo + $(this).scrollTop());
+		    }
+		});
 		
 		//***********************************************
 		// -- $btn click and anchor navigation
 		//***********************************************		
 		//Menu Btn click
 		$btn.click(methods.slide);
-			
+					
 		//Url with anchors
 		$('nav ul li a', $flexpanel).click(function(){
 			var $el = $(this);
@@ -201,7 +230,7 @@
 		//***********************************************
 		$flexpanel.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function() {
 			var $el = $('.viewport', $flexpanel);
-			if($('body').hasClass('flexpanel-active') && !$el.hasClass('smooth')){
+			if($('body').hasClass('flexpanel-active')){
 				$el.addClass('smooth');
 			}else{	
 				$el.removeClass('smooth');

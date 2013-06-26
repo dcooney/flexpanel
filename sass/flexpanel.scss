@@ -26,9 +26,7 @@
 	transform: translate3d(0,0,0); 
 	-webkit-backface-visibility: hidden;
 	-webkit-perspective: 1000;		
-	-webkit-transition: -webkit-transform .5s ease;
-	-moz-transition: -moz-transform .5s ease;
-	transition: transform .5s ease;
+	@include transition(all .5s ease);
 }	
  
 //***********************************************
@@ -42,11 +40,15 @@
 	height:auto;
 	padding: 0;
 	margin: 0;
-	z-index: 0;
+	z-index: 1;
+	display: block;
 	-webkit-transform: translate3d(0,0,0);
 	-moz-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0); 
-
+	
+	-webkit-transition: -webkit-transform .5s ease;
+	-moz-transition: -moz-transform .5s ease;
+	transition: transform .5s ease;
 	//Viewport, Do not remove this element
 	.viewport-wrap{
 		position: relative;
@@ -68,6 +70,16 @@
 		position: absolute;
 		left:-44px;
 		top:20px;
+		z-index:9;				
+		-webkit-transform: translate3d(0,0,0);
+		-moz-transform: translate3d(0,0,0);
+		transform: translate3d(0,0,0);
+		-webkit-backface-visibility: hidden;
+		-webkit-perspective: 1000;	 
+		-moz-transform: translate(0, 0);
+		-webkit-transform: translate(0, 0);
+		transform: translate(0, 0);
+		@include transition(all .35s ease);
 		&.in-view{
 			opacity: 1;
 			filter: alpha(opacity = 100);
@@ -93,7 +105,6 @@
 		position: absolute;
 		left:0%;
 		top:0;
-		background: rgba(255, 255, 255, 0.3);
 		display: none;
 		height:auto;
 		z-index: -1;
@@ -186,12 +197,12 @@
 // -- Right Align - Active State
 //***********************************************
 body.flexpanel-active{
-
 	#wrapper{		
 		-moz-transform: translate(-75%, 0);
 		-webkit-transform: translate(-75%, 0);
 		transform: translate(-75%, 0);
-		/* left: -80%; */
+		opacity: 0.4;
+		filter: alpha(opacity = 40);
 	}		 
 	.flexpanel{
 		right:-80%;
@@ -203,10 +214,7 @@ body.flexpanel-active{
 	.viewport-wrap{
 		-moz-transform: translate(-100%, 0);
 		-webkit-transform: translate(-100%, 0);
-		transform: translate(-100%, 0);	
-		.viewport{
-			overflow: scroll;
-		}
+		transform: translate(-100%, 0);			
 		.flex-btn{
 			opacity: 1 !important;
 			filter: alpha(opacity = 100) !important;
@@ -218,7 +226,7 @@ body.flexpanel-active{
 }
 
 //***********************************************
-// -- Left Align
+// -- Left Align Panel
 //***********************************************
 body.flexpanel-left .flexpanel{	
 	right:auto;
@@ -239,11 +247,77 @@ body.flexpanel-left.flexpanel-active{
 		-webkit-transform: translate(75%, 0);
 		transform: translate(75%, 0);
 	}		 
-	
+			 
 	.flexpanel{
+		right: auto;
+		left:-80%;
+		.cover{
+			display:block;
+    		left: 130%;    		
+    	}
+	}
+	.viewport-wrap{
 		-moz-transform: translate(100%, 0);
 		-webkit-transform: translate(100%, 0);
-		transform: translate(100%, 0);
+		transform: translate(100%, 0);	
+	}
+}
+
+//***********************************************
+// -- Top Align Panel
+//***********************************************
+body.flexpanel-top .flexpanel{	
+	right:auto;
+	left:0;
+	width:100% !important;
+	-moz-transform: translate(0, -100%);
+	-webkit-transform: translate(0, -100%);
+	transform: translate(0, -100%);
+	.flex-btn{		
+		top:auto;
+		left:20px;
+		bottom:-40px;
+	}
+	.cover{
+		left:auto;
+		right:auto;
+	}
+	.viewport-wrap{
+		width:100%;
+		-moz-transform: translate(0, 0);
+		-webkit-transform: translate(0, 0);
+		transform: translate(0, 0);
+	}
+	.viewport{
+		@include border-radius(0 0 6px 6px);
+		@include box-shadow('drop-shadow');
+		
+	}
+
+}
+
+//Active States
+body.flexpanel-top.flexpanel-active{
+	#wrapper{		
+		-moz-transform: translate(0, 200px);
+		-webkit-transform: translate(0, 200px);
+		transform: translate(0, 200px);
+	}					 
+	.flexpanel{
+		right: auto;
+		left:auto;
+		-moz-transform: translate(0, 0);
+		-webkit-transform: translate(0, 0);
+		transform: translate(0, 0);
+		.cover{
+			display:block;
+    		left: auto;    		
+    	}
+	}
+	.viewport-wrap{
+		-moz-transform: translate(0, 0);
+		-webkit-transform: translate(0, 0);
+		transform: translate(0, 0);
 	}
 }
 

@@ -360,9 +360,14 @@ section.banner {
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
+  position: relative;
+}
+.feature h3 {
+  position: relative;
 }
 .feature h3 a {
-  float: right;
+  position: absolute;
+  right: 0;
   background: #4183C4;
   display: inline-block;
   margin: 0 0 0 10px;
