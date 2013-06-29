@@ -98,10 +98,10 @@ ul{
 	padding:0;
 }
 	ul li{
-		margin:5px 0 10px 25px;
-		padding:0 0 0 10px;
+		margin:5px 0 10px 20px;
+		padding:0 0 0 5px;
 		line-height: 1.5em;
-		list-style: circle;
+		list-style-type: disc;
 	} 
 	ul ul{
 		margin:15px 0 0 15px;
@@ -300,5 +300,17 @@ h2 + h3{
 	overflow: hidden;
 	display: block;
 	clear: both;
+}
+
+#development{
+	ul{
+		text-align: left;
+		margin: 0 auto;
+	}
+	p{
+		text-align: left;
+	}
+
+	
 }
 	

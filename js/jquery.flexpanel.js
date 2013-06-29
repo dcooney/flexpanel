@@ -12,11 +12,12 @@
 
 (function($) {
     $.flexpanel = function(el, options) {
+    	"use strict";
         var defaults = {
             direction: 'right', // Panel slides in from 'left', 'right' or 'top'.
             wrapper: '#wrapper', // Define the main content wrapper, this is important as it needs to slide.
             button: '.flex-btn', // Define the menu button(open/close).
-            maxWidth: null, // Define a minimum screen width, this will help trigger FlexPanel functions.
+            maxWidth: null, // Define a minimum screen width to trigger FlexPanel functions - 'null' means there is no minimum.
             //panelWidth: 80, // Coming soon - Percent width of the panel, default is 80%.
             speed: 500 // Speed of the transitions.
         }	
@@ -26,9 +27,10 @@
 			$direction = options.direction,
 			$wrapper = $(options.wrapper),
 			$btn = $(options.button),
-			$maxWidth = options.maxWidth;
+			$maxWidth = options.maxWidth,
 			//$panelWidth = options.panelWidth,
 			$speed = options.speed,
+			$w = $(window).width(),
 			$isMobile = ('ontouchstart' in window);//( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false );	
 		
 		var methods = {
@@ -38,8 +40,7 @@
                 //***********************************************
                 $('body').addClass('flexpanel-'+$direction);
     			$flexpanel.append('<div class="cover"/>'); // Add .cover div
-    			$btn.addClass('in-view');
-    			$w = $(window).width();
+    			$btn.addClass('in-view');    			
     			if($maxWidth === null || $w <= $maxWidth){
     				methods.height(); 
     				$flexpanel.show(); //Display FlexPanel
@@ -274,9 +275,7 @@
 		}
 		$.fn.flexpanel.close=function(){
 			methods.slide('close');
-		}
-	
-	
+		}	
 	}
 	//***********************************************
 	// Create FLexPanel Object
@@ -284,8 +283,6 @@
 	$.fn.flexpanel = function(options){
 		new $.flexpanel(this, options);
 	}
-	
-	
 	
 
 })(jQuery);

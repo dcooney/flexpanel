@@ -32,8 +32,8 @@
       <a href="https://twitter.com/KaptonKaos" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @KaptonKaos</a> 
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> 
       </div>
-      <div class="highlight" id="download">
-        <p><a href="https://github.com/dcooney/flexpanel">FlexPanel</a> is a jQuery/CSS3 plugin for creating a scrollable, sliding panel  navigation system.</p>
+      <div class="highlight" id="intro">
+        <p><a href="https://github.com/dcooney/flexpanel">FlexPanel</a> is a lightweight, jQuery/CSS3 plugin for creating a scrollable, sliding panel navigation system.</p>
         <p class="btn"><a href="https://github.com/dcooney/flexpanel/archive/master.zip">Download</a></p>
       </div>
       <section class="feature" id="features">
@@ -53,11 +53,6 @@
           <p><img src="images/icon-resposnive.gif" alt="Fully Responsive"></p>
           <p>From mobile applications to desktop websites, FlexPanel can handle your navigation.</p>
         </div>
-      </section>
-      <section class="feature" id="installation">
-        <h2>Installation</h2>
-        <p>Notes on development and contributing are coming soon. In the meantime, download the source from <a href="https://github.com/dcooney/flexpanel">GitHub</a></p>
-        
       </section>
       <section class="feature language-javascript" id="usage">
         <h2>Usage</h2>
@@ -93,9 +88,9 @@ $.fn.flexpanel.toggle();</code></pre>
     direction: 'right', // Panel slides in from 'left', 'right' or 'top'.
 	wrapper: '#wrapper', // Define the main content wrapper.
 	button: '.flex-btn', // Define the menu button.
-	maxWidth: null, // Define a minimum screen width, this will help trigger FlexPanel functions.	
+	maxWidth: null, // Define a minimum screen width to trigger FlexPanel functions - 'null' means there is no minimum.	
 	//panelWidth: 80, // Coming soon - Percent width of the panel, default is 80%.
-	speed: 500, // Define transition for CSS3 fallback.
+	speed: 500, // Define transition speed for CSS3 fallback.
 }
         </code></pre>
       </section>
@@ -104,8 +99,20 @@ $.fn.flexpanel.toggle();</code></pre>
         <p>FlexPanel Examples are coming soon.</p>
       </section>
       <section class="feature" id="development">
-        <h2>Development</h2>
-        <p>Notes on development and contributing are coming soon. In the meantime, download the source from <a href="https://github.com/dcooney/flexpanel">GitHub</a></p>        
+        <h2>Development Notes</h2>
+        <ul>
+            <li>Browser and device testing is ongoing. Below is an early list of supported browsers.  
+            	<ul>
+                	<li>Mac: Firefox 21, Safari 6.0.5, Chrome 27.0.1453.116</li>
+                	<li>PC: IE 9, IE 10, Firefox 20</li>
+                	<li>iPhone iOS 6: Safari, Chrome</li>
+                </ul>
+            </li>
+            <li>FlexPanel currently supports a single panel only.</li>
+            <li>The ability to drag panel open and closed in currently in development.</li> 
+            <li>Submit issues via <a href="https://github.com/dcooney/flexpanel/issues" target="_blank">GitHub Issues</a></li>  
+            <li>Pull requests and contributions to the project are encouraged. Download the source from <a href="https://github.com/dcooney/flexpanel">GitHub</a></li>
+        </ul>   
       </section>      
       <section class="copyright">      
       	<p>Developed by <a href="https://twitter.com/KaptonKaos">Darren Cooney</a> for <a href="http://cnkt.ca">Connekt Media</a></p>
@@ -120,16 +127,17 @@ $.fn.flexpanel.toggle();</code></pre>
 	          <ul>
 	            <li class="active"><a class="anchor" href="#wrapper">FlexPanel</a>
 	              <ul>
+	                <li><a class="anchor" href="#intro">Introduction</a></li>
 	                <li><a class="anchor" href="#features">Features</a></li>
-	                <li><a class="anchor" href="#installation">Installation</a></li>
 	                <li><a class="anchor" href="#usage">Usage</a></li>
 	                <li><a class="anchor" href="#public">Public Functions</a></li>
 	                <li><a class="anchor" href="#configuration">Configuration</a></li>
 	                <li><a class="anchor" href="#examples">Examples</a></li>
-	                <li><a class="anchor" href="#development">Development</a></li>
+	                <li><a class="anchor" href="#development">Development Notes</a></li>
 	              </ul>
 	            </li>
 	            <li><a href="https://github.com/dcooney/flexpanel">Download</a></li>
+                <li><a href="https://github.com/dcooney/flexpanel/issues">Report Issue</a></li>
 	            <li><a href="mailto:darren.cooney@gmail.com?subject=FlexPanel">Contact</a></li>
 	          </ul>
 	          <div class="social">       
@@ -154,9 +162,8 @@ if (typeof jQuery == 'undefined'){
 <script type="text/javascript" src="js/jquery.flexpanel.js"></script> 
 <script type="text/javascript" src="prism/prism.js"></script> 
 <script type="text/javascript">
-	$('.flexpanel').flexpanel({
-		direction : 'right',
-	});
+	$('.flexpanel').flexpanel();
+	
 	$('a.toggle').click(function(){
 		$.fn.flexpanel.toggle();
 	});
