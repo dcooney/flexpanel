@@ -17,14 +17,18 @@ From mobile applications to desktop websites, FlexPanel can handle your navigati
 ##Usage
 
 ###Basic Init Method
-```$('.flexpanel').flexpanel();```
+```javascript
+$('.flexpanel').flexpanel();
+```
 
 ###Advanced Method
-```$('.flexpanel').flexpanel({
+```javascript
+$('.flexpanel').flexpanel({
     wrapper: '#wrapper',
     button: '.flex-btn',
 	maxWidth: 1200,    
-});```
+});
+```
 
 
 View FlexPanel examples on the offical website - [http://cnkt.ca/flexpanel](http://cnkt.ca/flexpanel/)
