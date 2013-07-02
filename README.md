@@ -25,7 +25,8 @@ From mobile applications to desktop websites, FlexPanel can handle your navigati
 	<section class="flexpanel">
 		// Your Flexpanel menu would be here
 	</section>
-</div>```
+</div>
+```
 
 ###Basic Init Method
 ```javascript
