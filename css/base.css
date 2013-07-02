@@ -500,15 +500,16 @@ h2 + h3 {
 }
 
 .example-top {
-  background: #ddedf7;
+  background: #f4f7ee;
 }
 .example-top .flexpanel {
   display: none;
 }
 .example-top #wrapper nav ul {
   width: 100%;
-  height: 40px;
-  background: #bed9e9;
+  height: 50px;
+  background: #fff;
+  border: 1px solid #ccc;
   margin: 30px 0;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -522,8 +523,8 @@ h2 + h3 {
   list-style: none;
   padding: 0;
   margin: 0;
-  height: 40px;
-  line-height: 40px;
+  height: 50px;
+  line-height: 50px;
   text-shadow: none;
   font-size: 1em;
 }
