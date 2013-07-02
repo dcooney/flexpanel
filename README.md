@@ -17,6 +17,17 @@ From mobile applications to desktop websites, FlexPanel can handle your navigati
 ##Usage
 
 ###Basic Init Method
+```
+<div id="container">
+	<div class="wrapper">
+		// All site content here
+	</div>
+	<section class="flexpanel">
+		// Your Flexpanel menu would be here
+	</section>
+</div>```
+
+###Basic Init Method
 ```javascript
 $('.flexpanel').flexpanel();
 ```
@@ -31,5 +42,5 @@ $('.flexpanel').flexpanel({
 ```
 
 
-View FlexPanel examples on the offical website - [http://cnkt.ca/flexpanel](http://cnkt.ca/flexpanel/)
+View FlexPanel examples on the [offical website](http://cnkt.ca/flexpanel/)
 
