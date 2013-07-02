@@ -310,7 +310,44 @@ h2 + h3{
 	p{
 		text-align: left;
 	}
-
-	
 }
 	
+//Examples
+
+.example-top{
+	background: #ddedf7;
+	.flexpanel{
+		display: none;
+	}
+	#wrapper nav ul{
+		width: 100%;
+		height:40px;
+		background: #bed9e9;
+		margin: 30px 0;
+		@include border-radius(4px);
+		overflow: hidden;
+		display: block;		
+		li{
+			width:16.666%;
+			float: left;
+			list-style: none;
+			padding:0;
+			margin:0;
+			height:40px;
+			line-height: 40px;
+			text-shadow: none;
+			font-size: 1em;
+		}
+	}
+	
+	@media screen and (max-width:767px) {
+		//Responsive styles
+				
+		header.main{
+			margin-top:40px;
+		}
+		#wrapper nav ul{
+			display: none;
+		}
+	}
+}

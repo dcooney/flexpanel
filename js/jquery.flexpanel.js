@@ -19,6 +19,7 @@
             button: '.flex-btn', // Define the menu button(open/close).
             maxWidth: null, // Define a minimum screen width to trigger FlexPanel functions - 'null' means there is no minimum.
             //panelWidth: 80, // Coming soon - Percent width of the panel, default is 80%.
+            delay: 250, // Delay length, used for window.resize() events (100 = 1 second).
             speed: 500 // Speed of the transitions.
         }	
 		var options = $.extend(defaults, options);
@@ -29,8 +30,10 @@
 			$btn = $(options.button),
 			$maxWidth = options.maxWidth,
 			//$panelWidth = options.panelWidth,
+			$delay = options.delay,
 			$speed = options.speed,
 			$w = $(window).width(),
+			$h = $(window).height(),
 			$isMobile = ('ontouchstart' in window);//( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false );	
 		
 		var methods = {
@@ -43,7 +46,7 @@
     			$btn.addClass('in-view');    			
     			if($maxWidth === null || $w <= $maxWidth){
     				methods.height(); 
-    				$flexpanel.show(); //Display FlexPanel
+    				$flexpanel.delay(250).fadeIn(250); //Display FlexPanel
     			}
     			if ($.fn.hammer){// If hammer.js is running
     			    methods.touch();
@@ -92,6 +95,11 @@
 							methods.slide();
 						}
 						break;
+						case 'top':
+						if(event.gesture.direction === 'up' && $('body').hasClass('flexpanel-active')){
+							methods.slide();
+						}
+						break;
 					}					
 				});	
 				$wrapper.add($btn).hammer().on("swipe, drag",function(event) {
@@ -106,24 +114,32 @@
 						if(event.gesture.direction === 'right' && !$('body').hasClass('flexpanel-active')){
 							methods.slide();
 						}
-						break;
+						break;						
 					}					
-				});				
-				//Function to determine scroll direction to show/hide nav
-				$('body').hammer().on("dragdown",function(event) {
-					//Determine if the user is attempting to scroll to top by deltaTime
-					if(event.gesture.deltaTime > 50){
-			        	$btn.addClass('in-view');
-			        }
-				});  
-				
-				$('body').hammer().on("dragup",function(event) {
-					//Determine if the user is attempting to scroll to top by timing the drag time
-					var $top = $(window).scrollTop();
-					if(event.gesture.deltaTime > 50 && $top > 100){
-			        	$btn.removeClass('in-view');
-			        }
-				});					
+				});	
+				if($direction === 'top'){
+					$btn.hammer().on("swipe, drag",function(event) {
+						if(event.gesture.direction === 'down' && !$('body').hasClass('flexpanel-active')){
+							methods.slide();
+						}
+					});
+				}	
+				//Functions to determine swipe direction to show/hide nav
+				if($direction === 'left' || $direction === 'right'){
+					$('body').hammer().on("dragdown",function(event) {
+						//Determine if the user is attempting to scroll to top by deltaTime
+						if(event.gesture.deltaTime > 50){
+				        	$btn.addClass('in-view');
+				        }
+					});  				
+					$('body').hammer().on("dragup",function(event) {
+						//Determine if the user is attempting to scroll to top by timing the drag time
+						var $top = $(window).scrollTop();
+						if(event.gesture.deltaTime > 50 && $top > 100){
+				        	$btn.removeClass('in-view');
+				        }
+					});	
+				}
 				//Lets add drag_lock to the panel. Coming soon
 				//$('body').hammer({ drag_lock_to_axis: true }).on("release dragleft dragright swipeleft swiperight", handleHammer);
             },
@@ -132,43 +148,119 @@
         		// -- Function to set the height of the nav for 
         		//    overflow scrolling
         		//***********************************************
-        		
-                if($isMobile){// If is iOS, add 60px to the window height to account for menubar.
-                	switch($direction){
-                		case 'top':
-                			$flexpanel.css('height', $(window).height()-60+'px');
-                			$('.viewport', $flexpanel).css('height', $(window).height()-60+'px');
-                			$('.cover', $flexpanel).css('height', $(window).height()-60+'px');
-                		break;
-                		default:  
-                			$flexpanel.css('height', $(window).height()+60+'px');
-                			$('.viewport', $flexpanel).css('height', $(window).height()+60+'px');
-                			$('.cover', $flexpanel).css('height', $(window).height()+60+'px');
-                		break;
-    				}
-    			}else{	
-    				switch($direction){
-                		case 'top':
-                			$flexpanel.css('height', $(window).height()-60+'px');
-                			$('.viewport', $flexpanel).css('height', $(window).height()-60+'px');
-                			$('.cover', $flexpanel).css('height', $(window).height()-60+'px');
-                		break;
-                		default:  
-                			$flexpanel.css('height', $(window).height()+'px');
-                			$('.viewport', $flexpanel).css('height', $(window).height()+'px');
-                			$('.cover', $flexpanel).css('height', $(window).height()+'px');
-                		break;
-    				}	
-    				
-    			}
+        		var $ph = $h - ($h/4);//panelheight
+            	switch($direction){
+            		case 'top':
+            			$flexpanel.css('height', $ph+'px');
+            			$('.viewport', $flexpanel).css('height', $ph+'px');
+            			$('.cover', $flexpanel).css('height', $ph+'px');
+            		break;
+            		default:  
+            			if($isMobile){
+            				// If is iOS, add 60px to the window height to account for menubar.
+            				$flexpanel.css('height', $h+60+'px');
+            				$('.viewport', $flexpanel).css('height', $h+60+'px');
+            				$('.cover', $flexpanel).css('height', $h+60+'px');
+            			}else{
+                			$flexpanel.css('height', $h+'px');
+                			$('.viewport', $flexpanel).css('height', $h+'px');
+                			$('.cover', $flexpanel).css('height', $h+'px');
+            			}
+            		break;
+				}
             }
         }
-		methods.init();
-			
-			
+		methods.init();				
+		
+		
+		//***********************************************
+		// -- Click Handlers
+		//***********************************************		
+		
+		$btn.click(methods.slide);
+					
+		// -- FlexPanel Menu Items w/anchors
+		$('nav ul li a', $flexpanel).click(function(){
+			var $el = $(this);
+			var $target = $el.attr('href');
+			if($el.hasClass('anchor')){
+				methods.slide();
+				var target_offset = $($target).offset();
+				var target_top = target_offset.top;
+				$('html, body').animate({scrollTop:target_top}, $speed);
+			}
+		});		
+		
+		//***********************************************
+		// -- Smooth Scrolling
+		//
+		//    Add smooth scrolling to the .viewport div 
+		//    on transition end, otherwise the scrolling 
+		//    is jumpy in iOS
+		//***********************************************
+		$flexpanel.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function() {
+			var $el = $('.viewport', $flexpanel);
+			if($('body').hasClass('flexpanel-active')){
+				$el.addClass('smooth');
+			}else{	
+				$el.removeClass('smooth');
+			}
+		});		
+				
+		
+		//***********************************************
+		// -- Window Resize() Events
+		//***********************************************
+		$(window).resize(function(){
+			delay(function(){
+				$w = $(window).width();
+				$h = $(window).height();
+				//If screen width has not been defined
+				if($maxWidth === null){
+					methods.height(); 
+				}else{
+					if($w <= $maxWidth){//If window is less than maxWidth
+						methods.height(); 
+					}
+					if($w > $maxWidth){
+						$flexpanel.hide(); //Hide flexpanel if $w is greater then maxWidth.
+						if($('body.flexpanel-active')) $('body').removeClass('flexpanel-active');
+					}else{
+						$flexpanel.show(); //Make sure flexpanel is always showing if $w is less then maxWidth.
+					}
+				}
+			}, $delay); 
+		});
+		// -- delay function
+		var delay = (function(){
+		  var timer = 0;
+		  return function(callback, ms){
+		    clearTimeout (timer);
+		    timer = setTimeout(callback, ms);
+		  };
+		})();
+		
+		
+		//***********************************************
+		// -- Window Scroll() Events
+		//***********************************************
+		$(window).scroll(function(){
+			var $top = $(window).scrollTop();
+			if($top < 100){ // Show $btn based on scrollTop val.
+				$btn.addClass('in-view');	
+			}	
+		});
+		
+		
+		//***********************************************
+		// -- Global Scrolling Functions
+		//***********************************************
 			
 		//***********************************************
-		// --  Allow scrolling for .viewport div only.
+		// -- Viewport Scrolling
+		//
+		//  Allow scrolling for .viewport div only if 
+		//  $flexpanl has a class of 'flexpanel-active'
 		//***********************************************		
 		$(document).on('touchmove',function(e){
 			if($('body').hasClass('flexpanel-active')){
@@ -183,6 +275,7 @@
 				e.currentTarget.scrollTop -= 1;
 			}
 		});
+		
 		//***********************************************
 		// -- prevents preventDefault from being called 
 		//    on document if it sees a scrollable div
@@ -191,7 +284,7 @@
 			e.stopPropagation();
 		});
 		
-		//Stop desktop mousewheel
+		// -- Stop body from scrolling using mousewheel while .viewport is active
 		$('.viewport').bind('mousewheel DOMMouseScroll', function(e) {
 		    var scrollTo = null;		
 		    if (e.type == 'mousewheel') {
@@ -207,65 +300,7 @@
 		});
 		
 		//***********************************************
-		// -- $btn click and anchor navigation
-		//***********************************************		
-		//Menu Btn click
-		$btn.click(methods.slide);
-					
-		//Url with anchors
-		$('nav ul li a', $flexpanel).click(function(){
-			var $el = $(this);
-			var $target = $el.attr('href');
-			if($el.hasClass('anchor')){
-				methods.slide();
-				var target_offset = $($target).offset();
-				var target_top = target_offset.top;
-				$('html, body').animate({scrollTop:target_top}, $speed);
-			}
-		});		
-		
-		//***********************************************
-		// -- Add smooth scrolling to the .viewport div 
-		//    on transition end, otherwise the scrolling 
-		//    is jumpy in iOS
-		//***********************************************
-		$flexpanel.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function() {
-			var $el = $('.viewport', $flexpanel);
-			if($('body').hasClass('flexpanel-active')){
-				$el.addClass('smooth');
-			}else{	
-				$el.removeClass('smooth');
-			}
-		});		
-				
-		
-		//***********************************************
-		// -- Window Resize Events
-		//***********************************************
-		$(window).resize(function(){
-			$w = $(window).width();
-			//If screen width has not been defined
-			if($maxWidth === null){
-				$(window).resize(methods.height); 
-			}else{
-				if($w <= $maxWidth){//If window is less than maxWidth
-					$(window).resize(methods.height); 
-				}
-			}
-		});
-		//***********************************************
-		// -- Window Scroll Events
-		//***********************************************
-		$(window).scroll(function(){
-			var $top = $(window).scrollTop();
-			if($top < 100){ // Show $btn based on scrollTop val.
-				$btn.addClass('in-view');	
-			}	
-		});
-		
-		
-		//***********************************************
-		//Public Functions
+		//Public Methods
 		//***********************************************
 		$.fn.flexpanel.toggle=function(){
 			methods.slide();

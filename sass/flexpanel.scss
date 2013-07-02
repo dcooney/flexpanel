@@ -8,8 +8,7 @@
  *
  * Author: Darren Cooney 
  * Twitter: @KaptonKaos
- */
- 
+ */ 
  
 @import "_functions";
 
@@ -30,7 +29,7 @@
 }	
  
 //***********************************************
-// -- FlexPanel Styles
+// -- FlexPanel Default Styles - RIGHT MENU
 //***********************************************
 .flexpanel{	
 	position: fixed;
@@ -41,14 +40,14 @@
 	padding: 0;
 	margin: 0;
 	z-index: 1;
-	display: block;
+	display: none;
 	-webkit-transform: translate3d(0,0,0);
 	-moz-transform: translate3d(0,0,0);
-	transform: translate3d(0,0,0); 
-	
+	transform: translate3d(0,0,0); 	
 	-webkit-transition: -webkit-transform .5s ease;
 	-moz-transition: -moz-transform .5s ease;
 	transition: transform .5s ease;
+	
 	//Viewport, Do not remove this element
 	.viewport-wrap{
 		position: relative;
@@ -76,9 +75,6 @@
 		transform: translate3d(0,0,0);
 		-webkit-backface-visibility: hidden;
 		-webkit-perspective: 1000;	 
-		-moz-transform: translate(0, 0);
-		-webkit-transform: translate(0, 0);
-		transform: translate(0, 0);
 		@include transition(all .35s ease);
 		&.in-view{
 			opacity: 1;
@@ -173,12 +169,7 @@
 					&:active{					
 						background: #232323; 
 						@include box-shadow();
-					}					
-					&.down{
-						//color:#fff;	
-						//background: #3a5455;
-						//@include box-shadow();	
-					}
+					}	
 				}
 				&.active > a{				
 					color:#66c9cd !important;
@@ -193,16 +184,15 @@
 	}
 }
 
-//***********************************************
-// -- Right Align - Active State
-//***********************************************
+// -- Default Active Properties
+
 body.flexpanel-active{
 	#wrapper{		
 		-moz-transform: translate(-75%, 0);
 		-webkit-transform: translate(-75%, 0);
 		transform: translate(-75%, 0);
-		opacity: 0.4;
-		filter: alpha(opacity = 40);
+		opacity: 0.4 !important;
+		filter: alpha(opacity = 40) !important;
 	}		 
 	.flexpanel{
 		right:-80%;
@@ -210,23 +200,23 @@ body.flexpanel-active{
     		display:block;
     		left: -130%;    		
     	}
-	}
-	.viewport-wrap{
-		-moz-transform: translate(-100%, 0);
-		-webkit-transform: translate(-100%, 0);
-		transform: translate(-100%, 0);			
-		.flex-btn{
-			opacity: 1 !important;
-			filter: alpha(opacity = 100) !important;
-		}		
-		nav ul{
-			@include transform(scale(1));	
+    	.viewport-wrap{
+			-moz-transform: translate(-100%, 0);
+			-webkit-transform: translate(-100%, 0);
+			transform: translate(-100%, 0);			
+			.flex-btn{
+				opacity: 1 !important;
+				filter: alpha(opacity = 100) !important;
+			}		
+			nav ul{
+				@include transform(scale(1));	
+			}
 		}
-	}
+	}	
 }
 
 //***********************************************
-// -- Left Align Panel
+// -- LEFT MENU
 //***********************************************
 body.flexpanel-left .flexpanel{	
 	right:auto;
@@ -240,6 +230,7 @@ body.flexpanel-left .flexpanel{
 		right:-50%;
 	}
 }
+// -- Left Active Properties
 
 body.flexpanel-left.flexpanel-active{
 	#wrapper{		
@@ -253,50 +244,98 @@ body.flexpanel-left.flexpanel-active{
 		left:-80%;
 		.cover{
 			display:block;
-    		left: 130%;    		
+    		left: 130%;    
+    		background: #ff0000;		
     	}
+    	.viewport-wrap{
+			-moz-transform: translate(100%, 0);
+			-webkit-transform: translate(100%, 0);
+			transform: translate(100%, 0);	
+		}
 	}
-	.viewport-wrap{
-		-moz-transform: translate(100%, 0);
-		-webkit-transform: translate(100%, 0);
-		transform: translate(100%, 0);	
-	}
+	
 }
 
 //***********************************************
-// -- Top Align Panel
+// -- TOP
 //***********************************************
-body.flexpanel-top .flexpanel{	
-	right:auto;
-	left:0;
-	width:100% !important;
-	-moz-transform: translate(0, -100%);
-	-webkit-transform: translate(0, -100%);
-	transform: translate(0, -100%);
-	.flex-btn{		
-		top:auto;
-		left:20px;
-		bottom:-40px;
-	}
-	.cover{
-		left:auto;
-		right:auto;
-	}
-	.viewport-wrap{
-		width:100%;
+body.flexpanel-top{
+	#wrapper{		
 		-moz-transform: translate(0, 0);
 		-webkit-transform: translate(0, 0);
 		transform: translate(0, 0);
+		opacity:1;
+		filter: alpha(opacity = 100);
 	}
-	.viewport{
-		@include border-radius(0 0 6px 6px);
-		@include box-shadow('drop-shadow');
+	.flexpanel{	
+		right:auto;
+		left:0;
+		width:100% !important;
+		-moz-transform: translate(0, -100%);
+		-webkit-transform: translate(0, -100%);
+		transform: translate(0, -100%);
 		
+		nav{
+			padding:0 0 20px;
+			ul{		
+				@include transform(scale(1));	
+				li{
+					text-align: center;
+					border:none;
+					border-top: 1px solid #efefef;
+					a{
+						background-color: #fff;
+						color:#666;
+					}	
+					&.active > a{
+						background: #efefef !important;
+						color:#222 !important;
+					}
+				}	
+			}
+		}
+		.flex-btn{		
+			top:auto;
+			left:0;
+			bottom:-30px;
+			width: 100%;
+			@include border-radius(0);
+			background: none;
+			height:30px;						
+			span{
+				width: 42px;
+				height:42px;
+				@include border-radius(0 0 4px 4px);
+				background-position: center center;
+				background-color: #fff;
+				margin: 0 auto;
+				border: 1px solid #ccc;
+				border-top:none;
+				&:hover{
+					background-color: #fff;
+					@include box-shadow(none);
+				}
+			}	
+		}
+		.cover{
+			left:auto;
+			right:auto;
+			display: none;
+		}
+		.viewport-wrap{
+			width:100%;
+			-moz-transform: translate(0, 0);
+			-webkit-transform: translate(0, 0);
+			transform: translate(0, 0);		
+			.viewport{
+				background: #fff;
+			}
+		}
 	}
-
 }
 
-//Active States
+// -- Top Active Properties
+
 body.flexpanel-top.flexpanel-active{
 	#wrapper{		
 		-moz-transform: translate(0, 200px);
@@ -311,14 +350,16 @@ body.flexpanel-top.flexpanel-active{
 		transform: translate(0, 0);
 		.cover{
 			display:block;
-    		left: auto;    		
+    		left: auto;  
+    		top:100%;		
     	}
-	}
-	.viewport-wrap{
-		-moz-transform: translate(0, 0);
-		-webkit-transform: translate(0, 0);
-		transform: translate(0, 0);
-	}
+    	.viewport-wrap{
+			-moz-transform: translate(0, 0);
+			-webkit-transform: translate(0, 0);
+			transform: translate(0, 0);
+			@include box-shadow('drop-shadow');
+		}
+	}	
 }
 
 
