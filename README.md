@@ -2,7 +2,7 @@
 
 A responsive scrolling panel navigation for mobile and desktop
 
-####Offical Site
+####
 View FlexPanel examples on the [offical website](http://cnkt.ca/flexpanel/)
 
 ##Features
