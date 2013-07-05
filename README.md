@@ -2,6 +2,9 @@
 
 A responsive scrolling panel navigation for mobile and desktop
 
+####Offical Site
+View FlexPanel examples on the [offical website](http://cnkt.ca/flexpanel/)
+
 ##Features
 
 ###Swipe Controls
@@ -16,7 +19,7 @@ From mobile applications to desktop websites, FlexPanel can handle your navigati
 
 ##Usage
 
-###HTML Structure
+####HTML Structure
 ```
 <div id="container">
 	<div class="wrapper">
@@ -32,12 +35,12 @@ From mobile applications to desktop websites, FlexPanel can handle your navigati
 </div>
 ```
 
-###Basic Init Method
+####Basic Init Method
 ```javascript
 $('.flexpanel').flexpanel();
 ```
 
-###Advanced Method
+####Advanced Method
 ```javascript
 $('.flexpanel').flexpanel({
     wrapper: '#wrapper',
@@ -46,8 +49,7 @@ $('.flexpanel').flexpanel({
 });
 ```
 
-###Changelog
+##Changelog
 - July 5, v1 Release
 
-View FlexPanel examples on the [offical website](http://cnkt.ca/flexpanel/)
 
