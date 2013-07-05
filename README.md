@@ -46,6 +46,8 @@ $('.flexpanel').flexpanel({
 });
 ```
 
+###Changelog
+-- Nothing yet :)
 
 View FlexPanel examples on the [offical website](http://cnkt.ca/flexpanel/)
 
