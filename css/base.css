@@ -535,4 +535,7 @@ h2 + h3 {
   .example-top #wrapper nav ul {
     display: none;
   }
+  .example-top .flexpanel {
+    display: block;
+  }
 }

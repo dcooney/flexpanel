@@ -281,6 +281,14 @@ body.flexpanel-top .flexpanel {
   -moz-transform: translate(0, -100%);
   -webkit-transform: translate(0, -100%);
   transform: translate(0, -100%);
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+}
+body.flexpanel-top .flexpanel.ready {
+  -webkit-transition: -webkit-transform .5s ease;
+  -moz-transition: -moz-transform .5s ease;
+  transition: transform .5s ease;
 }
 body.flexpanel-top .flexpanel div.navigation {
   padding: 0 0 20px;

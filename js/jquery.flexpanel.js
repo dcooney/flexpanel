@@ -151,6 +151,14 @@
         		var $ph = $h - ($h/4);//panelheight
             	switch($direction){
             		case 'top':
+            			// A fix to add a .ready class on load to init animations... Without this 
+            			// we have a flicker of the menu on page load.
+            			if(!$flexpanel.hasClass('ready')){
+            				$flexpanel.delay(1000).queue(function(){
+            					$flexpanel.addClass('ready');
+            				});
+            			}
+            			//
             			$flexpanel.css('height', $ph+'px');
             			$('.viewport', $flexpanel).css('height', $ph+'px');
             			$('.cover', $flexpanel).css('height', $ph+'px');
@@ -223,10 +231,12 @@
 						methods.height(); 
 					}
 					if($w > $maxWidth){
-						$flexpanel.hide(); //Hide flexpanel if $w is greater then maxWidth.
+						//Removed due to issue with firefox media query width vs webkit
+						//$flexpanel.hide(); //Hide flexpanel if $w is greater then maxWidth.
 						if($('body.flexpanel-active')) $('body').removeClass('flexpanel-active');
 					}else{
-						$flexpanel.show(); //Make sure flexpanel is always showing if $w is less then maxWidth.
+						//Removed due to issue with firefox media query width vs webkit
+						//$flexpanel.show(); //Make sure flexpanel is always showing if $w is less then maxWidth.
 					}
 				}
 			}, $delay); 
