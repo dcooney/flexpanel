@@ -47,7 +47,7 @@ $('.flexpanel').flexpanel({
 ```
 
 ###Changelog
--- Nothing yet :)
+- July 5, v1 Release
 
 View FlexPanel examples on the [offical website](http://cnkt.ca/flexpanel/)
 
