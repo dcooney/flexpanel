@@ -16,15 +16,19 @@ From mobile applications to desktop websites, FlexPanel can handle your navigati
 
 ##Usage
 
-###Basic Init Method
+###HTML Structure
 ```
 <div id="container">
 	<div class="wrapper">
 		// All site content here
 	</div>
-	<section class="flexpanel">
-		// Your Flexpanel menu would be here
-	</section>
+	<nav class="flexpanel">
+		<div class="viewport-wrap">
+			<div class="viewport">
+				// Your Flexpanel menu would be here
+			</div>
+		</div>
+	</nav>
 </div>
 ```
 
