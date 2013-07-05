@@ -61,11 +61,15 @@
         <p>Basic site structure include one containing div, inside that, a content wrapper and an instance of FlexPanel.
         <pre><code class="language-markup">&lt;div id="container">
 	&lt;div class="wrapper">
-		// All site content here
+		// All site content here			
 	&lt;/div>
-	&lt;section class="flexpanel">
-		// Your Flexpanel menu would be here
-	&lt;/section>
+	&lt;nav class="flexpanel">
+		&lt;div class="viewport-wrap">
+			&lt;div class="viewport">
+				// Your Flexpanel menu would be here
+			&lt;/div>
+		&lt;/div>
+	&lt;/nav>
 &lt;/div></code></pre>
         <h3>Basic Init Method</h3>
         <p>FlexPanel's initiate method in it's most simplest form.</p>
@@ -135,11 +139,12 @@ $.fn.flexpanel.toggle();</code></pre>
       </section>
     </div>
   </article>
-  <section class="flexpanel">
+  <nav class="flexpanel">
 	<div class="viewport-wrap">	
 		<div class="flex-btn"><span>Menu</span></div>
 	  	<div class="viewport">
-	        <nav>
+	  		<!-- Begin Edit -->
+	        <div class="navigation">
 	          <ul>
 	            <li class="active"><a class="anchor" href="#wrapper">FlexPanel</a>
 	              <ul>
@@ -163,10 +168,11 @@ $.fn.flexpanel.toggle();</code></pre>
 	      		<a href="https://twitter.com/KaptonKaos" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @KaptonKaos</a> 
 	      		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> 
 	          </div>
-	        </nav>       
+	          <!-- End Edit -->
+	        </nadivv>       
 	    </div>
 	</div>
-  </section>
+  </nav>
 </div>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript">

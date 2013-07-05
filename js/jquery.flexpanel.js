@@ -180,7 +180,7 @@
 		$btn.click(methods.slide);
 					
 		// -- FlexPanel Menu Items w/anchors
-		$('nav ul li a', $flexpanel).click(function(){
+		$('ul li a', $flexpanel).click(function(){
 			var $el = $(this);
 			var $target = $el.attr('href');
 			if($el.hasClass('anchor')){
