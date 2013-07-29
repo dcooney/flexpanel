@@ -34,7 +34,7 @@
 			$speed = options.speed,
 			$w = $(window).width(),
 			$h = $(window).height(),
-			$isMobile = (navigator.userAgent.match(/android|webos|iphone|ipad|ipod|blackberry/i) ? true : false );	
+			$isMobile = (navigator.userAgent.match(/iemobile|android|webos|iphone|ipad|ipod|blackberry|bb10/i) ? true : false );			
 		
 		var methods = {
             init: function() {
@@ -102,7 +102,7 @@
 						break;
 					}					
 				});	
-				$wrapper.add($btn).hammer().on("swipe, drag",function(event) {
+				$btn.hammer().on("swipe, drag",function(event) {
 					//$wrapper and $btn swipe events
 					switch($direction){
 						case 'right':
@@ -126,19 +126,22 @@
 				}	
 				//Functions to determine swipe direction to show/hide nav
 				if($direction === 'left' || $direction === 'right'){
-					$('body').hammer().on("dragdown",function(event) {
-						//Determine if the user is attempting to scroll to top by deltaTime
-						if(event.gesture.deltaTime > 50){
-				        	$btn.addClass('in-view');
-				        }
-					});  				
-					$('body').hammer().on("dragup",function(event) {
-						//Determine if the user is attempting to scroll to top by timing the drag time
-						var $top = $(window).scrollTop();
-						if(event.gesture.deltaTime > 50 && $top > 100){
-				        	$btn.removeClass('in-view');
-				        }
-					});	
+				    var isWindowsPhone = /iemobile/i.test(navigator.userAgent.toLowerCase());
+				    if (!isWindowsPhone) {
+    					$('body').hammer().on("dragdown",function(event) {
+    						//Determine if the user is attempting to scroll to top by deltaTime
+    						if(event.gesture.deltaTime > 50){
+    				        	$btn.addClass('in-view');
+    				        }
+    					});  				
+    					$('body').hammer().on("dragup",function(event) {
+    						//Determine if the user is attempting to scroll to top by timing the drag time
+    						var $top = $(window).scrollTop();
+    						if(event.gesture.deltaTime > 50 && $top > 100){
+    				        	$btn.removeClass('in-view');
+    				        }
+    					});	
+					}
 				}
 				//Lets add drag_lock to the panel. Coming soon
 				//$('body').hammer({ drag_lock_to_axis: true }).on("release dragleft dragright swipeleft swiperight", handleHammer);
@@ -266,50 +269,52 @@
 		// -- Global Scrolling Functions
 		//***********************************************
 			
-		//***********************************************
-		// -- Viewport Scrolling
-		//
-		//  Allow scrolling for .viewport div only if 
-		//  $flexpanl has a class of 'flexpanel-active'
-		//***********************************************		
-		$(document).on('touchmove',function(e){
-			if($('body').hasClass('flexpanel-active')){
-				e.preventDefault();
-			}
-		}); 
+        //***********************************************
+        // -- Viewport Scrolling
+        //
+        // Allow scrolling for .viewport div only if
+        // $flexpanl has a class of 'flexpanel-active'
+        //***********************************************
+        $(document).on('touchmove',function(e){
+            if($('body').hasClass('flexpanel-active')){
+             e.preventDefault();
+            }
+        });
+        
+        $('body').on('touchstart','.viewport',function(e) {
+            if (e.currentTarget.scrollTop === 0) {
+                e.currentTarget.scrollTop = 1;
+            } else if (e.currentTarget.scrollHeight === e.currentTarget.scrollTop + e.currentTarget.offsetHeight) {
+                e.currentTarget.scrollTop -= 1;
+            }
+        });
+        
+        //***********************************************
+        // -- Prevent Unnecessary Window Scrolling
+        //
+        // prevents e.preventDefault from being called
+        // on document if it sees a scrollable div
+        //***********************************************
+        $('body').on('touchmove','.viewport',function(e) {
+            e.stopPropagation();
+        });
+        
+        // -- Stop body from scrolling using mousewheel while .viewport is active
+        $('.viewport').bind('mousewheel DOMMouseScroll', function(e) {
+            var scrollTo = null;	
+        if (e.type == 'mousewheel') {
+            scrollTo = (e.originalEvent.wheelDelta * -1);
+        }
+        else if (e.type == 'DOMMouseScroll') {
+            scrollTo = 40 * e.originalEvent.detail;
+        } if (scrollTo) {
+            e.preventDefault();
+            $(this).scrollTop(scrollTo + $(this).scrollTop());
+        }});
 		
-		$('body').on('touchstart','.viewport',function(e) {
-			if (e.currentTarget.scrollTop === 0) {
-				e.currentTarget.scrollTop = 1;
-			} else if (e.currentTarget.scrollHeight === e.currentTarget.scrollTop + e.currentTarget.offsetHeight) {
-				e.currentTarget.scrollTop -= 1;
-			}
-		});
 		
-		//***********************************************
-		// -- Prevent Unnecessary Window Scrolling
-		//
-		//    prevents e.preventDefault from being called 
-		//    on document if it sees a scrollable div
-		//***********************************************
-		$('body').on('touchmove','.viewport',function(e) {
-			e.stopPropagation();
-		});
-		
-		// -- Stop body from scrolling using mousewheel while .viewport is active
-		$('.viewport').bind('mousewheel DOMMouseScroll', function(e) {
-		    var scrollTo = null;		
-		    if (e.type == 'mousewheel') {
-		        scrollTo = (e.originalEvent.wheelDelta * -1);
-		    }
-		    else if (e.type == 'DOMMouseScroll') {
-		        scrollTo = 40 * e.originalEvent.detail;
-		    }		
-		    if (scrollTo) {
-		        e.preventDefault();
-		        $(this).scrollTop(scrollTo + $(this).scrollTop());
-		    }
-		});
+
+
 		
 		
 		//***********************************************

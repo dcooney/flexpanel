@@ -43,6 +43,7 @@
   -webkit-transition: -webkit-transform .5s ease;
   -moz-transition: -moz-transform .5s ease;
   transition: transform .5s ease;
+  background: #444444;
 }
 .flexpanel .viewport-wrap {
   position: relative;
