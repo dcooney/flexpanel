@@ -127,10 +127,11 @@ $.fn.flexpanel.toggle();</code></pre>
                 	<li>Mac: Firefox 21, Safari 6.0.5, Chrome 27.0.1453.116</li>
                 	<li>PC: IE 9, IE 10, Firefox 20</li>
                 	<li>iPhone iOS 6: Safari, Chrome</li>
-                	<li>Various Android Devices, list coming soon...</li>
+                	<li>Various Android Devices, Windows phone, BB10</li>
                 </ul>
             </li>
-            <li>FlexPanel currently supports a single panel only.</li>
+            <li>Multiple FlexPanel instances are currently not supported.</li>
+            <li>Panel reveal animation is currently in development, this will fix FlexPanel beneath the content area vs sliding in from off screen.</li>
             <li>The ability to drag panel open and closed in currently in development.</li> 
             <li>Submit issues via <a href="https://github.com/dcooney/flexpanel/issues" target="_blank">GitHub Issues</a></li>  
             <li>Pull requests and contributions to the project are encouraged. Download the source from <a href="https://github.com/dcooney/flexpanel">GitHub</a></li>
@@ -141,11 +142,12 @@ $.fn.flexpanel.toggle();</code></pre>
       </section>
     </div>
   </article>
+  <!-- <Flexpanel> -->
   <nav class="flexpanel">
 	<div class="viewport-wrap">	
 		<div class="flex-btn"><span>Menu</span></div>
 	  	<div class="viewport">
-	  		<!-- Begin Edit -->
+	  		<!-- Begin Editing -->
 	        <div class="navigation">
 	          <ul>
 	            <li class="active"><a class="anchor" href="#wrapper">FlexPanel</a>
@@ -170,12 +172,12 @@ $.fn.flexpanel.toggle();</code></pre>
 	      		<a href="https://twitter.com/KaptonKaos" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @KaptonKaos</a> 
 	      		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> 
 	          </div>
-	          <div class="clear"></div>
-	          <!-- End Edit -->
+	          <!-- /End Editing -->
 	        </div>       
 	    </div>
 	</div>
   </nav>
+  <!-- /End <Flexpanel> -->
 </div>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript">

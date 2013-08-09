@@ -102,6 +102,7 @@
 						break;
 					}					
 				});	
+				
 				$btn.hammer().on("swipe, drag",function(event) {
 					//$wrapper and $btn swipe events
 					switch($direction){
