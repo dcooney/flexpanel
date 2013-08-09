@@ -50,6 +50,7 @@ $('.flexpanel').flexpanel({
 ```
 
 ##Changelog
+- August 8, Bug testing BB10 and Windows Phone(IEMobile), removing hammer.js from windows phone
 - July 5, v1 Release
 
 
