@@ -299,7 +299,9 @@ h3 {
 }
 
 h1 + h3 {
-  margin-top: -0.25em;
+  margin-top: -0.5em;
+  font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
+  font-weight: 300;
 }
 
 #container {
@@ -314,12 +316,12 @@ h1 + h3 {
   padding: 20px 0;
 }
 #wrapper div.inner {
-  padding: 0 30px 0;
+  padding: 0 25px 0;
 }
 
 header.main {
   text-align: center;
-  text-shadow: 1px 1px 0 #fff;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 section.banner {
@@ -500,7 +502,7 @@ h2 + h3 {
 }
 
 .example-top {
-  background: #f4f7ee;
+  background: #efefef;
 }
 .example-top .flexpanel {
   display: none;

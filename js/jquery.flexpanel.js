@@ -21,7 +21,7 @@
             //panelWidth: 80, // Coming soon - Percent width of the panel, default is 80%.
             delay: 250, // Delay length, used for window.resize() events (100 = 1 second).
             speed: 500 // Speed of the transitions.
-        }
+        };
         var options = $.extend(defaults, options);
         //Create vars
         var $flexpanel = $(el),
@@ -58,11 +58,13 @@
                 //***********************************************
                 switch(e){
                     case 'open':
-                        $('body').addClass('flexpanel-active');	
+                        $('body').addClass('flexpanel-active');
+                        $('.viewport', $flexpanel).addClass('smooth');	
                     break;
                     case 'close':
                         $('.viewport', $flexpanel).animate({scrollTop: 0}, 500);
-                        $('body').removeClass('flexpanel-active'); 
+                        $('body').removeClass('flexpanel-active');
+                        $('.viewport', $flexpanel).removeClass('smooth'); 
                         $(document).on('touchmove',function(e){
 							  return true;
 							});               
@@ -71,11 +73,13 @@
                         if($('body').hasClass('flexpanel-active')){			
             				$('.viewport', $flexpanel).animate({scrollTop: 0}, 500);
             				$('body').removeClass('flexpanel-active');
+							$('.viewport', $flexpanel).removeClass('smooth'); 
             				$(document).on('touchmove',function(e){
 							  return true;
 							});  
             			}else{
-            				$('body').addClass('flexpanel-active');	    		         						
+            				$('body').addClass('flexpanel-active');	  
+            				$('.viewport', $flexpanel).addClass('smooth');  		         						
             			}                    
                 }    			
             },
@@ -209,7 +213,12 @@
 		//    Add smooth scrolling to the .viewport div 
 		//    on transition end, otherwise the scrolling 
 		//    is jumpy in iOS
+		
+		// - Removed for now, issues with iOS7.
 		//***********************************************
+		$('.viewport', $flexpanel).bind("touchstart", function (event){}); //iOS7 smooth scroll fix
+		
+		/*
 		$flexpanel.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function() {
 			var $el = $('.viewport', $flexpanel);
 			if($('body').hasClass('flexpanel-active')){
@@ -217,7 +226,8 @@
 			}else{	
 				$el.removeClass('smooth');
 			}
-		});		
+		});	
+		*/	
 				
 		
 		//***********************************************

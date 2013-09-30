@@ -136,7 +136,9 @@ h3{
 	color:#666;
 }
 h1 + h3{
-	margin-top:-0.25em;	
+	margin-top:-0.5em;	
+	font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
+	font-weight: 300;
 }
 #container{
 	overflow: hidden;
@@ -148,12 +150,12 @@ h1 + h3{
 	margin:0 auto;
 	padding:20px 0;
 	div.inner{
-		padding:0 30px 0;
+		padding:0 25px 0;
 	} 
 }
 header.main{
 	text-align: center;
-	text-shadow: 1px 1px 0 #fff;
+	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
 }
 section.banner{
 	position: relative;
@@ -315,7 +317,7 @@ h2 + h3{
 //Examples
 
 .example-top{
-	background: #f4f7ee;
+	background: #efefef;
 	.flexpanel{
 		display: none;
 	}
