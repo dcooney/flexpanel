@@ -231,21 +231,18 @@ body.flexpanel-left .flexpanel{
 	}
 }
 // -- Left Active Properties
-
 body.flexpanel-left.flexpanel-active{
 	#wrapper{		
 		-moz-transform: translate(75%, 0);
 		-webkit-transform: translate(75%, 0);
 		transform: translate(75%, 0);
-	}		 
-			 
+	}			 
 	.flexpanel{
 		right: auto;
 		left:-80%;
 		.cover{
 			display:block;
-    		left: 130%;    
-    		background: #ff0000;		
+    		left: 130%;    		
     	}
     	.viewport-wrap{
 			-moz-transform: translate(100%, 0);

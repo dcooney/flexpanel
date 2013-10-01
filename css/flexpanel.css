@@ -259,7 +259,6 @@ body.flexpanel-left.flexpanel-active .flexpanel {
 body.flexpanel-left.flexpanel-active .flexpanel .cover {
   display: block;
   left: 130%;
-  background: #ff0000;
 }
 body.flexpanel-left.flexpanel-active .flexpanel .viewport-wrap {
   -moz-transform: translate(100%, 0);
