@@ -45,7 +45,6 @@
     			$flexpanel.append('<div class="cover"/>'); // Add .cover div
     			$btn.addClass('in-view');    			
     			if($maxWidth === null || $w <= $maxWidth){
-    				methods.height(); 
     				$flexpanel.delay(250).fadeIn(250); //Display FlexPanel
     			}
     			if ($.fn.hammer && $isMobile){// If hammer.js is running && Mobile === True;
@@ -216,19 +215,7 @@
 		
 		// - Removed for now, issues with iOS7.
 		//***********************************************
-		$('.viewport', $flexpanel).bind("touchstart", function (event){}); //iOS7 smooth scroll fix
-		
-		/*
-		$flexpanel.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function() {
-			var $el = $('.viewport', $flexpanel);
-			if($('body').hasClass('flexpanel-active')){
-				$el.addClass('smooth');
-			}else{	
-				$el.removeClass('smooth');
-			}
-		});	
-		*/	
-				
+		$('.viewport', $flexpanel).bind("touchstart", function (event){}); //iOS7 smooth scroll fix						
 		
 		//***********************************************
 		// -- Window Resize() Events
@@ -239,10 +226,10 @@
 				$h = $(window).height();
 				//If screen width has not been defined
 				if($maxWidth === null){
-					methods.height(); 
+					//Nothing yet :)
 				}else{
 					if($w <= $maxWidth){//If window is less than maxWidth
-						methods.height(); 
+						//Nothing yet :)
 					}
 					if($w > $maxWidth){
 						//Removed due to issue with firefox media query width vs webkit
