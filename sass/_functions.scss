@@ -1,4 +1,6 @@
 
+$speed : 0.3s;
+
 @mixin border-radius($radius) {
 	-webkit-border-radius: $radius;
 	-moz-border-radius: $radius;
@@ -38,10 +40,10 @@
 	-moz-transition: $val;
 	transition: $val;
 }
-@mixin transform($val){	
-	-webkit-transform: $val;
-	-moz-transform: $val;
-	transform: $val;
+@mixin transform($value){	
+	-webkit-transform: #{$value};
+	-moz-transform: #{$value};
+	transform: #{$value};
 }
 
 @mixin clear() { 
