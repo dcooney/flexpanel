@@ -56,7 +56,7 @@
         <h3>HTML Structure</h3>
         <p>Example site structure includes a site containing div, a content wrapper and an instance of FlexPanel.
         <pre><code class="language-markup">&lt;div id="container">
-	&lt;div class="wrapper">
+	&lt;div id="wrapper">
 		// All site content here			
 	&lt;/div>
 	&lt;nav class="flexpanel">
@@ -96,7 +96,7 @@ $.fn.flexpanel.toggle();</code></pre>
         <h2>Configuration</h2>
         <p>FlexPanel accepts the following configuration parameters...</p>
         <pre><code>{
-    direction: 'right', // Panel slides in from 'left', 'right' or 'top'.
+    direction: 'right', // Panel slides in from 'left', 'right'.
 	wrapper: '#wrapper', // Define the main content wrapper.
 	button: '.flex-btn', // Define the menu button.
 	maxWidth: null, // Define a minimum screen width to trigger FlexPanel functions - 'null' means there is no minimum.	
@@ -183,7 +183,10 @@ if (typeof jQuery == 'undefined'){
 <script type="text/javascript" src="js/jquery.flexpanel-min.js"></script> 
 <script type="text/javascript" src="prism/prism.js"></script> 
 <script type="text/javascript">
-	$('.flexpanel').flexpanel();
+	$('.flexpanel').flexpanel({
+		direction: 'right'
+		}
+	);
 	
 	$('a.toggle').click(function(){
 		$.fn.flexpanel.toggle();
