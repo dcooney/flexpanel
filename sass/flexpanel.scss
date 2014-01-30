@@ -67,8 +67,8 @@
 	
 	//Menu Button
 	.flex-btn{
-		width:40px;
-		height:40px;
+		width:34px;
+		height:33px;  
 		position: absolute;
 		left:-54px;
 		top:18px;
@@ -77,24 +77,40 @@
 		-webkit-backface-visibility: hidden;
 		-webkit-perspective: 1000;	 
 		@include transition(all $speed ease);
+		cursor: pointer;
 		&.in-view{
 			opacity: 1;
 			filter: alpha(opacity = 100);
 		}
-		span{
-			width:40px;
-			height:40px;		
-			background: url(../images/btn-menu-black.png) no-repeat center center;		
+		span{			
+			width: 20px;
+			height: 3px;
 			display: block;
-			@include hide;
-			@include border-radius(4px);
-			cursor: pointer;
-			&:hover{
-				background-color:#ccc;
+			overflow: hidden;
+			background-color:#999;
+			text-indent: -9999px;
+			display: block;
+			margin:0 auto 3px;
+			clear: both;
+			-webkit-transition: -webkit-transform 0.3s ease;
+			-moz-transition: -moz-transform 0.3s ease;
+			transition: transform 0.3s ease;
+			position: absolute;
+			&:nth-child(1){
+				top: 9px;
+				left: 7px;
 			}
-			&:active{
-				@include box-shadow(inset);
+			&:nth-child(2){
+				top: 15px;
+				left: 7px;
 			}
+			&:nth-child(3){
+				top: 21px;
+				left: 7px;
+			}
+		}	
+		&:hover span{
+			background-color:#666;
 		}
 	}
 	.cover{
@@ -119,7 +135,8 @@
 		&.smooth{// Add smooth scroll to webkit browsers <- This is a big deal
 			-webkit-overflow-scrolling: touch; 
 		}		
-	}	
+	}
+		
 	div.navigation{
 		padding: 0 0 50px;	
 		ul{		
@@ -207,6 +224,25 @@ body.flexpanel-active{
 			.flex-btn{
 				opacity: 1 !important;
 				filter: alpha(opacity = 100) !important;
+				
+				span{
+					background-color: #222;
+					&:nth-child(2) {
+						opacity: 0;
+					}
+					&:nth-child(1){
+						-webkit-transform: rotate(45deg);
+						-moz-transform: rotate(45deg);
+						transform: rotate(45deg);
+						top:15px;
+					}
+					&:nth-child(3){
+						-webkit-transform: rotate(-45deg);
+						-moz-transform: rotate(-45deg);
+						transform: rotate(-45deg);
+						top:15px;
+					}
+				}
 			}
 		}
 	}	

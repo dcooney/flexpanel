@@ -43,6 +43,7 @@
                 //***********************************************
                 $('body').addClass('flexpanel-'+$direction);
     			$flexpanel.append('<div class="cover"/>'); // Add .cover div
+    			$btn.append('<span></span><span></span><span></span>');
     			$btn.addClass('in-view');    			
     			if($maxWidth === null || $w <= $maxWidth){
     				$flexpanel.delay(250).fadeIn(250); //Display FlexPanel
