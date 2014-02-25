@@ -34,7 +34,17 @@
 			$speed = options.speed,
 			$w = $(window).width(),
 			$h = $(window).height(),
-			$isMobile = (navigator.userAgent.match(/iemobile|android|webos|iphone|ipad|ipod|blackberry|bb10/i) ? true : false );			
+			$isMobile = (navigator.userAgent.match(/iemobile|android|webos|iphone|ipad|ipod|blackberry|bb10/i) ? true : false ),
+			isIE = false;
+					
+		if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)){//test for MSIE x.x;
+			var ua = navigator.userAgent;
+			if ((ua.match(/MSIE 9.0/i))) {
+				$('body').addClass("ie9");
+				isIE = true;
+			}
+		}	
+			
 		
 		var methods = {
             init: function() {
@@ -313,9 +323,6 @@
             $(this).scrollTop(scrollTo + $(this).scrollTop());
         }});
 		
-		
-
-
 		
 		
 		//***********************************************
