@@ -2,7 +2,7 @@
  * jQuery FlexPanel v1
  * https://github.com/dcooney/flexpanel
  *
- * Copyright 2013 Connekt Media - http://cnkt.ca/flexpanel
+ * Copyright 2014 Connekt Media - http://cnkt.ca/flexpanel
  * Free to use under the GPLv2 license.
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
@@ -15,7 +15,6 @@
 #container,
 #wrapper {
 	width: 100%;
-	height: 100%;
 	position: relative;		
 }
 
@@ -120,7 +119,7 @@
 		left:0%;
 		top:0;
 		display: none;
-		height:auto;
+		height:100%;
 		z-index: -1;
 		@include transition(all $speed ease);
 	}		
@@ -154,7 +153,7 @@
 				width: auto;
 				display: block;
 				font-size:18px;
-				border-top: 1px solid #333;
+				border-top: 1px solid #333;				
 				&:first-child{
 					border-top:none;
 				}

@@ -206,6 +206,7 @@
 		//***********************************************		
 		
 		$btn.click(methods.slide);
+		$('.cover').click(methods.slide);
 					
 		// -- FlexPanel Menu Items w/anchors
 		$('ul li a', $flexpanel).click(function(){
