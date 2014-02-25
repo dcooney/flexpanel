@@ -138,7 +138,7 @@
     .flexpanel .viewport.smooth {
       -webkit-overflow-scrolling: touch; }
   .flexpanel div.navigation {
-    padding: 0 0 50px; }
+    padding: 10px 0 50px; }
     .flexpanel div.navigation ul {
       display: block;
       clear: both;
@@ -149,7 +149,7 @@
       -ms-transition: all 0.35s ease;
       transition: all 0.35s ease; }
       .flexpanel div.navigation ul li {
-        margin: 0 3%;
+        margin: 0 2%;
         padding: 0;
         clear: both;
         list-style: none;
@@ -160,19 +160,14 @@
         .flexpanel div.navigation ul li:first-child {
           border-top: none; }
         .flexpanel div.navigation ul li ul {
-          margin: 5px 0 20px;
+          margin: 0;
           border: none; }
           .flexpanel div.navigation ul li ul li {
-            font-size: 15px;
-            margin: 2px 0;
+            font-size: 14px;
+            margin: 0 0 5px;
             border: none; }
             .flexpanel div.navigation ul li ul li a {
-              padding: 10px 14px;
-              background: #444;
-              -webkit-border-radius: 2px;
-              -moz-border-radius: 2px;
-              -ms-border-radius: 2px;
-              border-radius: 2px; }
+              padding: 10px 14px; }
               .flexpanel div.navigation ul li ul li a:active {
                 background: #333; }
         .flexpanel div.navigation ul li a {

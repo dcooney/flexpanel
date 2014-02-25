@@ -138,7 +138,7 @@
 	}
 		
 	div.navigation{
-		padding: 0 0 50px;	
+		padding: 10px 0 50px;	
 		ul{		
 			display: block;
 			clear: both;			
@@ -146,28 +146,26 @@
 			margin:0;
 			@include transition(all $speed ease);			
 			li{
-				margin:0 3%;
+				margin:0 2%;
 				padding:0;
 				clear: both;
 				list-style: none;
 				width: auto;
 				display: block;
 				font-size:18px;
-				border-top: 1px solid #333;				
+				border-top: 1px solid #333;			
 				&:first-child{
 					border-top:none;
 				}
 				ul{
-					margin:5px 0 20px;
+					margin:0;
 					border: none;
 					li{
-						font-size:15px;
-						margin:2px 0;
+						font-size:14px;
+						margin:0 0 5px;
 						border:none;
 						a{
 							padding:10px 14px;
-							background: #444;
-							@include border-radius(2px);
 							&:active{								
 								background: #333; 
 							}
