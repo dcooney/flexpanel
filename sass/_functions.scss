@@ -3,45 +3,20 @@ $speed : 0.35s;
 @mixin border-radius($radius) {
 	-webkit-border-radius: $radius;
 	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
 	border-radius: $radius;
-}
-
-@mixin box-shadow($type: 'inset', $color:rgba(0, 0, 0, 0.25)) {
-	@if $type == 'inset' {
-	  -webkit-box-shadow: inset 0 2px 3px $color;
-	  -moz-box-shadow: inset 0 2px 3px $color;
-	  box-shadow: inset 0 2px 3px $color;
-	}
-	@else if $type == 'drop-shadow' {
-	  -webkit-box-shadow: 0 3px 2px $color;
-	  -moz-box-shadow: 0 3px 2px $color;
-	  box-shadow: 0 3px 2px $color;
-	}
-	@else if $type == 'border' {
-	  -webkit-box-shadow: 0 0 1px $color;
-	  -moz-box-shadow: 0 0 1px $color;
-	  box-shadow: 0 0 1px $color;
-	}
-	@else if $type == 'none' {
-	  -webkit-box-shadow: none;
-	  -moz-box-shadow: none;
-	  box-shadow: none;
-	}
-	@else {
-	  -webkit-box-shadow: 0 0 5px $color;
-	  -moz-box-shadow: 0 0 5px $color;
-	  box-shadow: 0 0 5px $color;
-	}
 }
 
 @mixin transition($val){	
 	-webkit-transition: $val;
 	-moz-transition: $val;
+	-ms-transition: $val;
 	transition: $val;
 }
 @mixin transform($value){	
 	-webkit-transform: #{$value};
 	-moz-transform: #{$value};
+	-ms-transform: #{$value};
 	transform: #{$value};
 }
 

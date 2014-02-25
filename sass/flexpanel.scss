@@ -23,6 +23,7 @@
 	left:0;	
 	-webkit-transform: translate3d(1,0,0);
 	-moz-transform: translate3d(1,0,0);
+	-ms-transform: translate3d(1,0,0);
 	transform: translate3d(1,0,0); 
 	-webkit-backface-visibility: hidden;
 	-webkit-perspective: 1000;		
@@ -44,6 +45,7 @@
 	display: none;
 	-webkit-transform: translate3d(0,0,0);
 	-moz-transform: translate3d(0,0,0);
+	-ms-transform: translate3d(0,0,0); 	
 	transform: translate3d(0,0,0); 	
 	-webkit-transition: -webkit-transform $speed ease;
 	-moz-transition: -moz-transform $speed ease;
@@ -56,12 +58,10 @@
 		height: 100%;
 		-webkit-transform: translate3d(0,0,0);
 		-moz-transform: translate3d(0,0,0);
+		-ms-transform: translate3d(0,0,0);
 		transform: translate3d(0,0,0); 
 		-webkit-backface-visibility: hidden;
 		-webkit-perspective: 1000;
-		-webkit-transition: -webkit-transform $speed ease;
-		-moz-transition: -moz-transform $speed ease;
-		transition: transform $speed ease;
 		@include transition(all $speed ease);
 	}
 	
@@ -94,6 +94,7 @@
 			clear: both;
 			-webkit-transition: -webkit-transform 0.3s ease;
 			-moz-transition: -moz-transform 0.3s ease;
+			-ms-transition: -ms-transform 0.3s ease;
 			transition: transform 0.3s ease;
 			position: absolute;
 			&:nth-child(1){
@@ -130,7 +131,7 @@
 		padding: 0;			
 		overflow: hidden;			
 		overflow-y: auto;	
-		background: #444;
+		background: #222;
 		@include box-sizing;
 		&.smooth{// Add smooth scroll to webkit browsers <- This is a big deal
 			-webkit-overflow-scrolling: touch; 
@@ -142,25 +143,23 @@
 		ul{		
 			display: block;
 			clear: both;			
-			background: #333;
 			padding:0;
 			margin:0;
 			@include transition(all $speed ease);			
 			li{
-				margin:0;
+				margin:0 3%;
 				padding:0;
 				clear: both;
 				list-style: none;
 				width: auto;
 				display: block;
 				font-size:18px;
-				border-top: 1px solid #444;
-				border-bottom: 1px solid #111;
+				border-top: 1px solid #333;
 				&:first-child{
 					border-top:none;
 				}
 				ul{
-					margin:5px 20px 20px;
+					margin:5px 0 20px;
 					border: none;
 					li{
 						font-size:15px;
@@ -171,21 +170,19 @@
 							background: #444;
 							@include border-radius(2px);
 							&:active{								
-								background: #2f2f2f; 
-								@include box-shadow();
+								background: #333; 
 							}
 						}
 					}
 				}
 				a{
-					padding:10px 20px;
+					padding:10px 0;
 					display: block;
 					color:#fff;
 					text-decoration: none;	
 					-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 					&:active{					
-						background: #232323; 
-						@include box-shadow();
+						background: #111; 
 					}	
 				}
 				&.active > a{				
@@ -205,8 +202,9 @@
  
 body.flexpanel-active{
 	#wrapper{		
-		-moz-transform: translate(-79%, 0);
 		-webkit-transform: translate(-79%, 0);
+		-moz-transform: translate(-79%, 0);
+		-ms-transform: translate(-79%, 0);
 		transform: translate(-79%, 0);
 		opacity: 0.4 !important;
 		filter: alpha(opacity = 40) !important;
@@ -218,9 +216,7 @@ body.flexpanel-active{
     		left: -130%;    		
     	}
     	.viewport-wrap{
-			-moz-transform: translate(-100%, 0);
-			-webkit-transform: translate(-100%, 0);
-			transform: translate(-100%, 0);			
+			@include transform("translate(-100%, 0)");		
 			.flex-btn{
 				opacity: 1 !important;
 				filter: alpha(opacity = 100) !important;
@@ -231,15 +227,11 @@ body.flexpanel-active{
 						opacity: 0;
 					}
 					&:nth-child(1){
-						-webkit-transform: rotate(45deg);
-						-moz-transform: rotate(45deg);
-						transform: rotate(45deg);
+						@include transform("rotate(45deg)");
 						top:15px;
 					}
 					&:nth-child(3){
-						-webkit-transform: rotate(-45deg);
-						-moz-transform: rotate(-45deg);
-						transform: rotate(-45deg);
+						@include transform("rotate(-45deg)");
 						top:15px;
 					}
 				}
@@ -266,9 +258,7 @@ body.flexpanel-left .flexpanel{
 // -- Left Active Properties
 body.flexpanel-left.flexpanel-active{
 	#wrapper{		
-		-moz-transform: translate(75%, 0);
-		-webkit-transform: translate(75%, 0);
-		transform: translate(75%, 0);
+		@include transform("translate(75%, 0)");
 	}			 
 	.flexpanel{
 		right: auto;
@@ -278,12 +268,9 @@ body.flexpanel-left.flexpanel-active{
     		left: 130%;    		
     	}
     	.viewport-wrap{
-			-moz-transform: translate(100%, 0);
-			-webkit-transform: translate(100%, 0);
-			transform: translate(100%, 0);	
+			@include transform("translate(100%, 0)");
 		}
-	}
-		
+	}		
 }
 
 

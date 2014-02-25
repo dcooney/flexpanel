@@ -2,7 +2,7 @@
  * jQuery FlexPanel v1
  * https://github.com/dcooney/flexpanel
  *
- * Copyright 2013 Connekt Media - http://cnkt.ca/flexpanel
+ * Copyright 2014 Connekt Media - http://cnkt.ca/flexpanel
  * Free to use under the GPLv2 license.
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
@@ -10,7 +10,7 @@
  * Twitter: @KaptonKaos
  */
 
-(function($) {
+(function($) { 
     "use strict";
     $.flexpanel = function(el, options) {
         var defaults = {
@@ -62,21 +62,23 @@
                         $('.viewport', $flexpanel).addClass('smooth');	
                     break;
                     case 'close':
-                        $('.viewport', $flexpanel).animate({scrollTop: 0}, 500);
-                        $('body').removeClass('flexpanel-active');
-                        $('.viewport', $flexpanel).removeClass('smooth'); 
+                        $('.viewport', $flexpanel).animate({scrollTop: 0}, 500, function(){
+                           $('.viewport', $flexpanel).removeClass('smooth');
+                        });
+                        $('body').removeClass('flexpanel-active');                        
                         $(document).on('touchmove',function(e){
-							  return true;
-							});               
+                           return true;
+                        });               
                     break;
                     default: 
-                        if($('body').hasClass('flexpanel-active')){			
-            				$('.viewport', $flexpanel).animate({scrollTop: 0}, 500);
-            				$('body').removeClass('flexpanel-active');
-							$('.viewport', $flexpanel).removeClass('smooth'); 
+                    if($('body').hasClass('flexpanel-active')){			
+            				$('.viewport', $flexpanel).animate({scrollTop: 0}, 500, function(){
+                           $('.viewport', $flexpanel).removeClass('smooth');
+                        });
+            				$('body').removeClass('flexpanel-active');                                   
             				$(document).on('touchmove',function(e){
-							  return true;
-							});  
+                           return true;
+                        });  
             			}else{
             				$('body').addClass('flexpanel-active');	  
             				$('.viewport', $flexpanel).addClass('smooth');  		         						
