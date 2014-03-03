@@ -10,7 +10,10 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="css/base.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/flexpanel.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="prism/prism.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="js/prism/prism.css" type="text/css" media="screen" />
+<!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 </head>
 <body>
 <div id="container">
@@ -173,15 +176,10 @@ $.fn.flexpanel.toggle();</code></pre>
   </nav>
   <!-- /End <Flexpanel> -->
 </div>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript">
-if (typeof jQuery == 'undefined'){
-    document.write(unescape("%3Cscript src='js/jquery-1.9.1.min.js' type='text/javascript'%3E%3C/script%3E"));
-}
-</script> 
-<script type="text/javascript" src="js/jquery.hammer-min.js"></script> 
-<script type="text/javascript" src="js/jquery.flexpanel.js"></script> 
-<script type="text/javascript" src="prism/prism.js"></script> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
+<script type="text/javascript" src="js/libs/jquery.hammer-min.js"></script> 
+<script type="text/javascript" src="js/jquery.flexpanel.min.js"></script> 
+<script type="text/javascript" src="js/prism/prism.js"></script> 
 <script type="text/javascript">
 	$('.flexpanel').flexpanel();
 	

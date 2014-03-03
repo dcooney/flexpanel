@@ -1,0 +1,10 @@
+{
+  "name": "willow",
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "^0.4.2",
+    "grunt-contrib-sass": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-contrib-uglify": "latest"
+  }
+}

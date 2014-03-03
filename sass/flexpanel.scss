@@ -50,6 +50,7 @@
 	-moz-transition: -moz-transform $speed ease;
 	transition: transform $speed ease;
 	
+	//********************
 	//Viewport, Do not remove this element
 	.viewport-wrap{
 		position: relative;
@@ -64,14 +65,17 @@
 		@include transition(all $speed ease);
 	}
 	
+	//********************	
 	//Menu Button
 	.flex-btn{
 		width:34px;
 		height:33px;  
 		position: absolute;
-		left:-54px;
-		top:18px;
-		z-index:9;				
+		left:-52px;
+		top:25px;
+		z-index:9;		
+		background: #fff;		
+		@include border-radius(3px);
 		@include transform('translate3d(1,0,0)');
 		-webkit-backface-visibility: hidden;
 		-webkit-perspective: 1000;	 
@@ -86,7 +90,7 @@
 			height: 3px;
 			display: block;
 			overflow: hidden;
-			background-color:#999;
+			background-color:#666;
 			text-indent: -9999px;
 			display: block;
 			margin:0 auto 3px;
@@ -96,21 +100,21 @@
 			-ms-transition: -ms-transform 0.3s ease;
 			transition: transform 0.3s ease;
 			position: absolute;
-			&:nth-child(1){
+			&.one{
 				top: 9px;
 				left: 7px;
 			}
-			&:nth-child(2){
+			&.two{
 				top: 15px;
 				left: 7px;
 			}
-			&:nth-child(3){
+			&.three{
 				top: 21px;
 				left: 7px;
 			}
 		}	
 		&:hover span{
-			background-color:#666;
+			background-color:#333;
 		}
 	}
 	.cover{
@@ -122,7 +126,8 @@
 		height:100%;
 		z-index: -1;
 		@include transition(all $speed ease);
-	}		
+	}	
+		
 	.viewport{
 		width:100%;
 		height: 100%;
@@ -130,7 +135,7 @@
 		padding: 0;			
 		overflow: hidden;			
 		overflow-y: auto;	
-		background: #222;
+		background: #333;
 		@include box-sizing;
 		&.smooth{// Add smooth scroll to webkit browsers <- This is a big deal
 			-webkit-overflow-scrolling: touch; 
@@ -138,7 +143,10 @@
 	}
 		
 	div.navigation{
-		padding: 10px 0 50px;	
+		padding: 10px 10px 50px;
+		@include transition(all $speed ease);
+		@include transform('scale(0.95)');
+			
 		ul{		
 			display: block;
 			clear: both;			
@@ -166,9 +174,6 @@
 						border:none;
 						a{
 							padding:10px 14px;
-							&:active{								
-								background: #333; 
-							}
 						}
 					}
 				}
@@ -178,17 +183,10 @@
 					color:#fff;
 					text-decoration: none;	
 					-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-					&:active{					
-						background: #111; 
-					}	
 				}
 				&.active > a{				
 					color:#66c9cd !important;
-					background: #222 !important;
 					font-weight: bold;
-				}
-				&.active{
-					background-color: #222;
 				}
 			}
 		}
@@ -212,6 +210,9 @@ body.flexpanel-active{
     		display:block;
     		left: -130%;    		
     	}
+    	.navigation{       	
+		   @include transform('scale(1)');
+    	}
     	.viewport-wrap{
 			@include transform("translate(-100%, 0)");		
 			.flex-btn{
@@ -220,14 +221,14 @@ body.flexpanel-active{
 				
 				span{
 					background-color: #222;
-					&:nth-child(2) {
+					&.two {
 						opacity: 0;
 					}
-					&:nth-child(1){
+					&.one{
 						@include transform("rotate(45deg)");
 						top:15px;
 					}
-					&:nth-child(3){
+					&.three{
 						@include transform("rotate(-45deg)");
 						top:15px;
 					}
@@ -235,6 +236,17 @@ body.flexpanel-active{
 			}
 		}
 	}	
+}
+
+body.isIE{
+   &.flexpanel-active{
+      #wrapper{
+         left: -79%;
+      }
+      .flexpanel{
+         right: 0;
+      }
+   }
 }
 
 //***********************************************
@@ -268,6 +280,16 @@ body.flexpanel-left.flexpanel-active{
 			@include transform("translate(100%, 0)");
 		}
 	}		
+}
+body.flexpanel-left.isIE{
+   &.flexpanel-active{
+      #wrapper{
+         left: 75%;
+      }
+      .flexpanel{
+         left: 0;
+      }
+   }
 }
 
 
