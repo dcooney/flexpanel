@@ -161,7 +161,7 @@
 				width: auto;
 				display: block;
 				font-size:18px;
-				border-top: 1px solid #333;			
+				border-bottom: 1px solid #444;		
 				&:first-child{
 					border-top:none;
 				}
@@ -170,10 +170,18 @@
 					border: none;
 					li{
 						font-size:14px;
-						margin:0 0 5px;
+						margin:0 5px 5px;
 						border:none;
+						position: relative;
 						a{
-							padding:10px 14px;
+							padding:6px 12px;
+							&:before{
+								content: '»';
+								position: absolute;
+								left: 0;
+								top: 5px;
+								opacity: 0.5;
+							}
 						}
 					}
 				}
