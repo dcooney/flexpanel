@@ -20,13 +20,11 @@
 
 #wrapper{
 	left:0;	
-	-webkit-transform: translate3d(1,0,0);
-	-moz-transform: translate3d(1,0,0);
-	-ms-transform: translate3d(1,0,0);
-	transform: translate3d(1,0,0); 
+   @include transform('translate3d(0,0,0)');	
 	-webkit-backface-visibility: hidden;
 	-webkit-perspective: 1000;		
 	@include transition(all $speed ease);
+	z-index: 0;
 }	
  
 //***********************************************
@@ -42,13 +40,10 @@
 	margin: 0;
 	z-index: 1;
 	display: none;
-	-webkit-transform: translate3d(0,0,0);
-	-moz-transform: translate3d(0,0,0);
-	-ms-transform: translate3d(0,0,0); 	
-	transform: translate3d(0,0,0); 	
+   @include transform('translate3d(0,0,0)');	
 	-webkit-transition: -webkit-transform $speed ease;
 	-moz-transition: -moz-transform $speed ease;
-	transition: transform $speed ease;
+	transition: transform $speed ease;	
 	
 	//********************
 	//Viewport, Do not remove this element
@@ -63,6 +58,7 @@
 		-webkit-backface-visibility: hidden;
 		-webkit-perspective: 1000;
 		@include transition(all $speed ease);
+		z-index: 1;
 	}
 	
 	//********************	
@@ -72,13 +68,9 @@
 		height:33px;  
 		position: absolute;
 		left:-52px;
-		top:25px;
-		z-index:9;		
+		top:25px;	
 		background: #fff;		
 		@include border-radius(3px);
-		@include transform('translate3d(1,0,0)');
-		-webkit-backface-visibility: hidden;
-		-webkit-perspective: 1000;	 
 		@include transition(all $speed ease);
 		cursor: pointer;
 		&.in-view{
@@ -124,7 +116,7 @@
 		top:0;
 		display: none;
 		height:100%;
-		z-index: -1;
+		z-index: 0;
 		@include transition(all $speed ease);
 	}	
 		
@@ -144,9 +136,7 @@
 		
 	div.navigation{
 		padding: 10px 10px 50px;
-		@include transition(all $speed ease);
-		@include transform('scale(0.95)');
-			
+		@include transition(all $speed ease);			
 		ul{		
 			display: block;
 			clear: both;			
@@ -218,15 +208,11 @@ body.flexpanel-active{
     		display:block;
     		left: -130%;    		
     	}
-    	.navigation{       	
-		   @include transform('scale(1)');
-    	}
     	.viewport-wrap{
 			@include transform("translate(-100%, 0)");		
 			.flex-btn{
 				opacity: 1 !important;
-				filter: alpha(opacity = 100) !important;
-				
+				filter: alpha(opacity = 100) !important;				
 				span{
 					background-color: #222;
 					&.two {

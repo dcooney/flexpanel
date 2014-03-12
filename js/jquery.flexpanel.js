@@ -55,7 +55,7 @@
             //***********************************************
             $('body').addClass('flexpanel-' + $direction);
             $flexpanel.append('<div class="cover"/>'); // Add .cover div
-            $btn.append('<span class="one"></span><span class="two"></span><span class="three"></span>');
+            $btn.append('<a href="javascript:void(0);"><span class="one"></span><span class="two"></span><span class="three"></span></a>');
             $btn.addClass('in-view');
             if ($maxWidth === null || $w <= $maxWidth) {
                $flexpanel.delay(250).fadeIn(250); //Display FlexPanel
@@ -176,8 +176,19 @@
       //***********************************************
       // -- Click Handlers
       //***********************************************		
-      $btn.click(methods.slide);
-      $('.cover').click(methods.slide);
+      
+     /*
+ $($btn).on('click', function(){
+         //methods.slide();
+      });
+*/
+      $btn.on('click', function(){
+         methods.slide();
+      });
+      
+      $('.cover').on('click', function(){
+         methods.slide();
+      });
 
       // -- FlexPanel Menu Items w/anchors
       $('ul li a', $flexpanel).click(function () {

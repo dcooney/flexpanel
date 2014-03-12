@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  * jQuery FlexPanel v1
  * https://github.com/dcooney/flexpanel
@@ -17,16 +18,17 @@
 
 #wrapper {
   left: 0;
-  -webkit-transform: translate3d(1, 0, 0);
-  -moz-transform: translate3d(1, 0, 0);
-  -ms-transform: translate3d(1, 0, 0);
-  transform: translate3d(1, 0, 0);
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
   -webkit-transition: all 0.35s ease;
   -moz-transition: all 0.35s ease;
   -ms-transition: all 0.35s ease;
   transition: all 0.35s ease;
+  z-index: 0;
 }
 
 .flexpanel {
@@ -39,10 +41,10 @@
   margin: 0;
   z-index: 1;
   display: none;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
   -webkit-transition: -webkit-transform 0.35s ease;
   -moz-transition: -moz-transform 0.35s ease;
   transition: transform 0.35s ease;
@@ -61,6 +63,7 @@
   -moz-transition: all 0.35s ease;
   -ms-transition: all 0.35s ease;
   transition: all 0.35s ease;
+  z-index: 1;
 }
 .flexpanel .flex-btn {
   width: 34px;
@@ -68,18 +71,11 @@
   position: absolute;
   left: -52px;
   top: 25px;
-  z-index: 9;
   background: #fff;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   border-radius: 3px;
-  -webkit-transform: translate3d(1,0,0);
-  -moz-transform: translate3d(1,0,0);
-  -ms-transform: translate3d(1,0,0);
-  transform: translate3d(1,0,0);
-  -webkit-backface-visibility: hidden;
-  -webkit-perspective: 1000;
   -webkit-transition: all 0.35s ease;
   -moz-transition: all 0.35s ease;
   -ms-transition: all 0.35s ease;
@@ -128,7 +124,7 @@
   top: 0;
   display: none;
   height: 100%;
-  z-index: -1;
+  z-index: 0;
   -webkit-transition: all 0.35s ease;
   -moz-transition: all 0.35s ease;
   -ms-transition: all 0.35s ease;
@@ -162,10 +158,6 @@
   -moz-transition: all 0.35s ease;
   -ms-transition: all 0.35s ease;
   transition: all 0.35s ease;
-  -webkit-transform: scale(0.95);
-  -moz-transform: scale(0.95);
-  -ms-transform: scale(0.95);
-  transform: scale(0.95);
 }
 .flexpanel div.navigation ul {
   display: block;
@@ -236,12 +228,6 @@ body.flexpanel-active .flexpanel {
 body.flexpanel-active .flexpanel .cover {
   display: block;
   left: -130%;
-}
-body.flexpanel-active .flexpanel .navigation {
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
 }
 body.flexpanel-active .flexpanel .viewport-wrap {
   -webkit-transform: translate(-100%, 0);
