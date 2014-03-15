@@ -7,8 +7,8 @@ View FlexPanel examples on the [official website](http://cnkt.ca/flexpanel/)
 
 ##Updates
 
-###Additional Animations Now Available!
-You now have the option to 'reveal' or 'slide' the panel. A 'reveal' animation will give a more natural app movement to the navigation.
+####Additional Animation Now Available!
+You now have the option to 'reveal' or 'slide' the panel. The 'reveal' animation will give a more native app movement to the navigation.
 
 ##Features
 
