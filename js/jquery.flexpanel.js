@@ -1,5 +1,5 @@
 /*
- * jQuery FlexPanel v1
+ * jQuery FlexPanel v1.1
  * https://github.com/dcooney/flexpanel
  *
  * Copyright 2014 Connekt Media - http://cnkt.ca/flexpanel
@@ -12,22 +12,20 @@
 (function ($) {
    "use strict";
    $.flexpanel = function (el, options) {
-      var defaults = {
-         direction: 'right', // Slide direction 'left | right'
-         wrapper: '#wrapper', // Define content wrapper
-         button: '.flex-btn', // Define the menu button(open/close)         
-         maxWidth: null, // Minimum screen width to trigger FlexPanel, 'null' = no minimum.
-         speed: 500 // Speed of the transitions.
+      var defaults = { 
+      	  animation: 'slide', //'slide' | 'reveal'
+          direction: 'right', // 'left | right'
+          wrapper: '#wrapper', // Define content wrapper
+          button: '.flex-btn' // Define the menu button(open/close)         
       };
       var options = $.extend(defaults, options); 
       //Create vars
       var $flexpanel = $(el),
+          $animation = options.animation, 
           $direction = options.direction,
           $wrapper = $(options.wrapper),
           $btn = $(options.button),
-          $maxWidth = options.maxWidth,
-          $speed = options.speed,
-          $w = $(window).width(),
+          $prefix = 'flexpanel',
           $isMobile = (navigator.userAgent.match(/iemobile|android|webos|iphone|ipad|ipod|blackberry|bb10/i) ? true : false),
           isIE = false,
           $body = $('body');
@@ -53,13 +51,15 @@
             //***********************************************
             // -- FlexPanel Init Functions
             //***********************************************
-            $('body').addClass('flexpanel-' + $direction);
-            $flexpanel.append('<div class="cover"/>'); // Add .cover div
-            $btn.append('<a href="javascript:void(0);"><span class="one"></span><span class="two"></span><span class="three"></span></a>');
-            $btn.addClass('in-view');
-            if ($maxWidth === null || $w <= $maxWidth) {
-               $flexpanel.delay(250).fadeIn(250); //Display FlexPanel
+            $('body').addClass($prefix+ '-' + $direction + ' ' + $prefix+ '-' + $animation);
+            if($animation === 'reveal'){
+            	$btn.append('<a href="javascript:void(0);"><span class="one"></span><span class="two"></span><span class="three"></span></a>');
+            	$btn.appendTo($body);
+            }else{
+	            $btn.append('<a href="javascript:void(0);"><span class="one"></span><span class="two"></span><span class="three"></span></a>');
             }
+            $btn.addClass('in-view');
+            $flexpanel.delay(500).fadeIn(250); //Display FlexPanel
             if ($.fn.hammer && $isMobile) { // If hammer.js is running && Mobile === True;
                methods.touch();
             }
@@ -70,7 +70,7 @@
             //***********************************************
             switch (e) {
             case 'open':
-               $('body').addClass('flexpanel-active');
+               $body.addClass('flexpanel-active');
                $('.viewport', $flexpanel).addClass('smooth');
                break;
             case 'close':
@@ -79,25 +79,29 @@
                }, 500, function () {
                   $('.viewport', $flexpanel).removeClass('smooth');
                });
-               $('body').removeClass('flexpanel-active');
+               $body.removeClass('flexpanel-active');
                $(document).on('touchmove', function (e) {
                   return true;
                });
                break;
             default:
-               if ($('body').hasClass('flexpanel-active')) {
+               if ($body.hasClass('flexpanel-active')) {
                   $('.viewport', $flexpanel).animate({
                      scrollTop: 0
                   }, 500, function () {
                      $('.viewport', $flexpanel).removeClass('smooth');
                   });
-                  $('body').removeClass('flexpanel-active');
+                  $wrapper.unbind('click');  
+                  $body.removeClass('flexpanel-active');
                   $(document).on('touchmove', function (e) {
                      return true;
                   });
-               } else {
-                  $('body').addClass('flexpanel-active');
-                  $('.viewport', $flexpanel).addClass('smooth');                 
+               } else {               
+                  $body.addClass('flexpanel-active');
+                  $('.viewport', $flexpanel).addClass('smooth');  
+                  setTimeout(function() {
+                  	$wrapper.delay(250).unbind('click').bind('click', methods.slide);
+				  }, 250);              
                }               
             }
          },
@@ -105,7 +109,7 @@
             //***********************************************
             // -- Swipe & Touch Events
             //***********************************************
-            $('.cover').add($btn).hammer().on("swipe, drag", function (event) {
+            $btn.hammer().on("swipe, drag", function (event) {
                switch ($direction) {
                case 'right':
                   if (event.gesture.direction === 'right' && $('body').hasClass('flexpanel-active')) {
@@ -147,21 +151,22 @@
                   }
                });
             }
-            //Functions to determine swipe direction to show/hide nav
+            // Function to determine swipe direction, then show/hide nav if scrolling down
+            // I'm going to disable this for now.
             if ($direction === 'left' || $direction === 'right') {
                var isWindowsPhone = /iemobile/i.test(navigator.userAgent.toLowerCase());
                if (!isWindowsPhone) {
                   $body.hammer().on("dragdown", function (event) {
                      //Determine if the user is attempting to scroll to top by deltaTime
                      if (event.gesture.deltaTime > 50) {
-                        $btn.addClass('in-view');
+                        //$btn.addClass('in-view');
                      }
                   });
                   $body.hammer().on("dragup", function (event) {
                      //Determine if the user is attempting to scroll to top by timing the drag time
                      var $top = $(window).scrollTop();
                      if (event.gesture.deltaTime > 50 && $top > 100) {
-                        $btn.removeClass('in-view');
+                        //$btn.removeClass('in-view');
                      }
                   });
                }
@@ -177,18 +182,10 @@
       // -- Click Handlers
       //***********************************************		
       
-     /*
- $($btn).on('click', function(){
-         //methods.slide();
-      });
-*/
       $btn.on('click', function(){
          methods.slide();
       });
       
-      $('.cover').on('click', function(){
-         methods.slide();
-      });
 
       // -- FlexPanel Menu Items w/anchors
       $('ul li a', $flexpanel).click(function () {
@@ -200,7 +197,7 @@
             var target_top = target_offset.top;
             $('html, body').animate({
                scrollTop: target_top
-            }, $speed);
+            }, 500);
          }
       });
 

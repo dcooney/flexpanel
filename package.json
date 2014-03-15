@@ -5,6 +5,7 @@
     "grunt": "^0.4.2",
     "grunt-contrib-sass": "latest",
     "grunt-contrib-watch": "latest",
-    "grunt-contrib-uglify": "latest"
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-cssmin": "latest"
   }
 }

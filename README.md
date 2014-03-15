@@ -7,6 +7,9 @@ View FlexPanel examples on the [offical website](http://cnkt.ca/flexpanel/)
 
 ##Features
 
+###Additional Animations Now Available!
+With the help of hammer.js you can swipe to interact with the Flexpanel menu.
+
 ###Swipe Controls
 With the help of hammer.js you can swipe to interact with the Flexpanel menu.
 
@@ -43,14 +46,17 @@ $('.flexpanel').flexpanel();
 ####Advanced Method
 ```javascript
 $('.flexpanel').flexpanel({
+    animation: 'slide', // 'slide' | 'reveal'
+    direction: 'right', // 'left' | 'right'
     wrapper: '#wrapper',
-    button: '.flex-btn',
-	maxWidth: 1200,    
+    button: '.flex-btn',  
 });
 ```
 
 ##Changelog
-- August 8, Bug testing BB10 and Windows Phone(IEMobile), removing hammer.js events from windows phone
-- July 5, v1 Release
+- 03/14/2014, Added reveal animation
+- 03/12/2014, Removing maxWidth parameter
+- 03/1/2014, Added IE8 & 9 support
 
+View the full changelog on the [offical website](http://cnkt.ca/flexpanel/#changelog) 
 

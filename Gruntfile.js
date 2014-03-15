@@ -12,7 +12,18 @@ module.exports = function (grunt) {
                'css/flexpanel.css': 'sass/flexpanel.scss',
             }
          }
-      },      
+      },  
+      cssmin: {
+		add_banner: {
+		    options: {
+		      banner: '/* jQuery FlexPanel v1.1 - https://github.com/dcooney/flexpanel */'
+		    },
+		    files: {
+		      'css/flexpanel.min.css': ['css/flexpanel.css'],
+		      'css/base.min.css': ['css/base.css']
+		    }
+		  }
+	  },    
       concat: {
          dist: {
             src: [
@@ -31,7 +42,7 @@ module.exports = function (grunt) {
       watch: {
          css: {
             files: '**/*.scss',
-            tasks: ['sass']
+            tasks: ['sass', 'cssmin']
          },
          js: {
            files: 'js/*.js',
@@ -41,8 +52,9 @@ module.exports = function (grunt) {
    });
 
    grunt.loadNpmTasks('grunt-contrib-sass');
+   grunt.loadNpmTasks('grunt-contrib-cssmin');
    grunt.loadNpmTasks('grunt-contrib-watch');
    grunt.loadNpmTasks('grunt-contrib-uglify');
 
-   grunt.registerTask('default', ['sass', 'uglify', 'watch']);
+   grunt.registerTask('default', ['sass', 'uglify', 'cssmin', 'watch']);
 };

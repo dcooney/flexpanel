@@ -1,0 +1,68 @@
+﻿<!doctype html>
+<html lang="en">
+<!--<![endif]-->
+<head>
+<title>FlexPanel: Slide from Right</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, maximum-scale=1 user-scalable=no" />
+<link rel="stylesheet" href="../css/base.min.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/flexpanel.min.css" type="text/css" media="screen" />
+<!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+<div id="container">
+  <article id="wrapper">
+    <div class="inner">
+      <header class="main">
+        <h1>FlexPanel - Panel navigation</h1>
+        <h3>&larr; Slide from Right</h3>
+      </header>
+       <section class="banner"> <img src="../images/beach.jpg" class="aligncenter"> <a id="fork" href="https://github.com/dcooney/flexpanel" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a> </section>
+      <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <h2>Pellentesque ornare sem lacinia quam venenatis vestibulum</h2>
+      <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <h2>Pellentesque ornare sem lacinia quam venenatis vestibulum</h2>
+      <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      
+      <div class="highlight" id="intro">
+        <p><a href="https://github.com/dcooney/flexpanel">FlexPanel</a> is a lightweight, jQuery/CSS3 plugin for creating a scrollable, sliding panel navigation system.</p>
+        <p class="btn"><a href="https://github.com/dcooney/flexpanel/archive/master.zip">Download</a></p>
+      </div>
+    </div>
+  </article>
+  <nav class="flexpanel">
+	<div class="viewport-wrap">	
+		<div class="flex-btn"></div>
+	  	<div class="viewport">
+	        <div class="navigation">
+	          <ul>
+	            <li class="active"><a class="anchor" href="#wrapper">Mobile Home</a></li>
+	            <li><a href="#">About</a></li>
+	            <li><a href="#">Services</a></li>
+	            <li><a href="#">Work</a></li>
+	            <li><a href="#">The Lab</a></li>
+	            <li><a href="#">Blog</a></li>
+	            <li><a href="#">Store</a></li>
+	            <li><a href="#">Affiliates</a></li>
+	            <li><a href="#">Contact</a></li>
+	          </ul>
+	        </div>       
+	    </div>
+	</div>
+  </nav>
+</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
+<script type="text/javascript" src="../js/libs/jquery.hammer-min.js"></script> 
+<script type="text/javascript" src="../js/jquery.flexpanel.min.js"></script> 
+<script type="text/javascript"> 
+	$('.flexpanel').flexpanel({
+		animation: 'slide',
+		direction: 'right'		
+	});
+</script>
+</body>
+</html>
