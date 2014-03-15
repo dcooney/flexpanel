@@ -112,6 +112,9 @@
 						position: relative;
 						a{
 							padding:6px 12px;
+							&:hover{
+								color: #ccc;
+							}
 							&:before{
 								content: '»';
 								position: absolute;
@@ -128,7 +131,10 @@
 					display: block;
 					color:#fff;
 					text-decoration: none;	
-					-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+					-webkit-tap-highlight-color: rgba(0, 0, 0, 0);				
+					&:hover{
+						color: #ccc;
+					}
 				}
 				&.active > a{				
 					color:#ef6f6f !important;

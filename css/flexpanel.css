@@ -142,6 +142,9 @@
 .flexpanel div.navigation ul li ul li a {
   padding: 6px 12px;
 }
+.flexpanel div.navigation ul li ul li a:hover {
+  color: #ccc;
+}
 .flexpanel div.navigation ul li ul li a:before {
   content: '»';
   position: absolute;
@@ -156,6 +159,9 @@
   color: #fff;
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.flexpanel div.navigation ul li a:hover {
+  color: #ccc;
 }
 .flexpanel div.navigation ul li.active > a {
   color: #ef6f6f !important;
