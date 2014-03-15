@@ -3,7 +3,7 @@
 A responsive scrolling panel navigation for mobile and desktop
 
 ####
-View FlexPanel examples on the [offical website](http://cnkt.ca/flexpanel/)
+View FlexPanel examples on the [official website](http://cnkt.ca/flexpanel/)
 
 ##Updates
 
@@ -59,5 +59,5 @@ $('.flexpanel').flexpanel({
 - 03/12/2014, Removing maxWidth parameter
 - 03/1/2014, Added IE8 & 9 support
 
-View the full changelog on the [offical website](http://cnkt.ca/flexpanel/#changelog) 
+View the full changelog on the [official website](http://cnkt.ca/flexpanel/#changelog) 
 
