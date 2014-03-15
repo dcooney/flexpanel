@@ -153,6 +153,7 @@ h3 + p{
 	position: relative;		
 	margin:0 auto;
 	padding:20px 0 0;
+	border-top: 4px solid #ef6f6f;
 	div.inner{
 		padding:0;
 	} 
@@ -186,6 +187,9 @@ section.banner{
 	overflow: hidden;
 	p{
 		margin:5px 20px;
+	}
+	@media screen and (max-width:$tablet) {	
+		padding: 7% !important;
 	}
 }
 .feature:nth-child(even){
@@ -221,7 +225,7 @@ section.banner{
 			}
 			&:active{
 				text-decoration: none;
-				background: #e16262;
+				background: #d35858;
 				box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.1);
 			}
 		}
@@ -242,6 +246,7 @@ section.banner{
 	p{
 		text-align: center;
 		margin: 0;
+		font-size: 0.9em;
 	}
 }
 p.btn{
@@ -266,7 +271,7 @@ p.btn{
 		}
 		&:active{
 			text-decoration: none;
-			background: #e16262;
+			background: #d35858;
 			box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.1);
 		}
 	}
@@ -309,7 +314,6 @@ h2 + h3{
 	text-align: center;
 	margin: 20px auto 20px;
 	display: block;
-	@include border-radius(4px);
 }
 .social{
 	margin:20px;
