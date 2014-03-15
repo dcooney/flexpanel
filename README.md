@@ -5,19 +5,20 @@ A responsive scrolling panel navigation for mobile and desktop
 ####
 View FlexPanel examples on the [offical website](http://cnkt.ca/flexpanel/)
 
-##Features
+##Updates
 
 ###Additional Animations Now Available!
+You now have the option to 'reveal' or 'slide' the panel. A 'reveal' animation will give a more natural app movement to the navigation.
+
+##Features
+
+####Swipe Controls
 With the help of hammer.js you can swipe to interact with the Flexpanel menu.
 
-###Swipe Controls
-With the help of hammer.js you can swipe to interact with the Flexpanel menu.
-
-
-###CSS3 Animations
+####CSS3 Animations
 There are no jQuery animations here. All animations are controlled by CSS3 properties.
 
-###Fully Responsive
+####Fully Responsive
 From mobile applications to desktop websites, FlexPanel can handle your navigation.
 
 ##Usage
