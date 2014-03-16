@@ -193,9 +193,11 @@ section.banner{
 .inner-wrap{
 	max-width: 900px;
 	margin: 0 auto;
-	padding: 0 30px;
+	padding: 0;
 	position: relative;
-	
+}
+.content-wrap{
+	padding: 20px;
 }
 
 .highlight, 
@@ -206,9 +208,6 @@ section.banner{
 	overflow: hidden;
 	p{
 		margin:5px 0;
-	}
-	@media screen and (max-width:$tablet) {	
-		padding: 7% !important;
 	}
 }
 
