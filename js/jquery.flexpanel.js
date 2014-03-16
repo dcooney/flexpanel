@@ -60,9 +60,12 @@
             }
             $btn.addClass('in-view');
             $flexpanel.delay(500).fadeIn(250); //Display FlexPanel
-            if ($.fn.hammer && $isMobile) { // If hammer.js is running && Mobile === True;
-               methods.touch();
-            }
+            if($animation === 'reveal')
+            	$flexpanel.addClass('reveal');
+            	
+            if ($.fn.hammer && $isMobile) 
+            	methods.touch();// If hammer.js is running && Mobile === True;
+            
          },
          slide: function (e) {
             //***********************************************

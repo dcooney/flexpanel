@@ -256,8 +256,8 @@ ul {
 }
 
 ul li {
-  margin: 5px 0 10px 40px;
-  padding: 0x;
+  margin: 5px 0 10px 16px;
+  padding: 0;
   line-height: 1.5em;
   list-style-type: disc;
 }
@@ -287,11 +287,11 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 38px;
+  font-size: 40px;
 }
 
 h2 {
-  font-size: 28px;
+  font-size: 32px;
 }
 
 h3 {
@@ -315,7 +315,6 @@ h3 + p {
   position: relative;
   margin: 0 auto;
   padding: 20px 0 0;
-  border-top: 4px solid #ef6f6f;
 }
 #wrapper div.inner {
   padding: 0;
@@ -325,9 +324,28 @@ header.main {
   text-align: center;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
 }
+header.main .inner-wrap {
+  padding: 0 20px;
+}
 
 section.banner {
   position: relative;
+  padding: 0 20px;
+}
+section.banner .inner-wrap {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.aligncenter {
+  clear: both;
+  text-align: center;
+  margin: 20px auto 20px;
+  display: block;
+  border: 1px solid #ebebeb;
+  padding: 5px;
+  background: #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
 @media screen and (max-width: 480px) {
@@ -337,22 +355,22 @@ section.banner {
 }
 
 .inner-wrap {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
+  padding: 0 30px;
   position: relative;
 }
 
 .highlight,
 .feature {
-  text-align: center;
   background: #ffffe9;
-  padding: 5%;
+  padding: 60px 5%;
   margin: 0;
   overflow: hidden;
 }
 .highlight p,
 .feature p {
-  margin: 5px 20px;
+  margin: 5px 0;
 }
 @media screen and (max-width: 768px) {
   .highlight,
@@ -361,23 +379,46 @@ section.banner {
   }
 }
 
+.highlight,
+#features {
+  text-align: center;
+}
+.highlight h2:before,
+#features h2:before {
+  border: none;
+  margin: 0;
+}
+
+.highlight {
+  overflow: hidden;
+}
+
+.highlight p {
+  font-family: 'Gafata', helvetica, arial, sans-serif;
+}
+
 .feature:nth-child(even) {
-  background: #f7f7f7;
+  background: #f0f0f0;
 }
 
 .feature {
   background: #fff;
-  padding: 5%;
+  padding: 60px 5%;
 }
 .feature h2 {
-  border-bottom: 1px solid #efefef;
-  padding: 0 0 10px;
-  margin: 0 0 20px;
-  -webkit-border-radius: 4px 4px 0 0;
-  -moz-border-radius: 4px 4px 0 0;
-  -ms-border-radius: 4px 4px 0 0;
-  border-radius: 4px 4px 0 0;
+  padding: 0;
+  margin: 0 0 30px 0;
+  line-height: 1;
   position: relative;
+}
+.feature h2:before {
+  border-top: 1px solid #ccc;
+  color: inherit;
+  content: "";
+  display: block;
+  height: 0;
+  margin: 0 0 40px;
+  width: 50px;
 }
 .feature h3 {
   position: relative;
@@ -495,13 +536,6 @@ p.btn a:active {
 pre + h3,
 h2 + h3 {
   margin-top: 30px;
-}
-
-.aligncenter {
-  clear: both;
-  text-align: center;
-  margin: 20px auto 20px;
-  display: block;
 }
 
 .social {

@@ -412,8 +412,11 @@ body.flexpanel-reveal.flexpanel-right #wrapper {
   left: 0;
 }
 body.flexpanel-reveal.flexpanel-right .flexpanel {
-  right: 0;
+  right: -100%;
   z-index: 0;
+}
+body.flexpanel-reveal.flexpanel-right .flexpanel.reveal {
+  right: 0;
 }
 body.flexpanel-reveal.flexpanel-right .flex-btn {
   position: fixed;
@@ -454,6 +457,9 @@ body.flexpanel-reveal.flexpanel-right.flexpanel-active .flex-btn {
 body.flexpanel-reveal.flexpanel-right.flexpanel-active .flexpanel {
   right: 0;
 }
+body.flexpanel-reveal.flexpanel-right.flexpanel-active .flexpanel.reveal {
+  right: 0;
+}
 body.flexpanel-reveal.flexpanel-right.flexpanel-active .flexpanel .viewport-wrap {
   -webkit-transform: translate(0, 0);
   -moz-transform: translate(0, 0);
@@ -468,6 +474,9 @@ body.flexpanel-reveal.flexpanel-left .flexpanel {
   right: auto;
   left: 0;
   z-index: 0;
+}
+body.flexpanel-reveal.flexpanel-left .flexpanel.reveal {
+  left: 0;
 }
 body.flexpanel-reveal.flexpanel-left .flex-btn {
   position: fixed;
@@ -506,6 +515,9 @@ body.flexpanel-reveal.flexpanel-left.flexpanel-active .flex-btn {
   }
 }
 body.flexpanel-reveal.flexpanel-left.flexpanel-active .flexpanel {
+  left: 0;
+}
+body.flexpanel-reveal.flexpanel-left.flexpanel-active .flexpanel.reveal {
   left: 0;
 }
 body.flexpanel-reveal.flexpanel-left.flexpanel-active .flexpanel .viewport-wrap {

@@ -363,8 +363,11 @@ body.flexpanel-reveal{
 			left: 0;
 		}
 		.flexpanel{
-			right:0;
+			right:-100%;
 			z-index: 0;
+			&.reveal{
+				right: 0;
+			}
 		}
 		.flex-btn{
 			position: fixed;
@@ -398,6 +401,9 @@ body.flexpanel-reveal{
 			}
 			.flexpanel{
 				right: 0;
+				&.reveal{
+					right: 0;
+				}	
 				.viewport-wrap{
 					@include transform("translate(0, 0)");
 				}
@@ -414,6 +420,9 @@ body.flexpanel-reveal{
 			right: auto;
 			left:0;
 			z-index: 0;
+			&.reveal{
+				left: 0;
+			}
 		}
 		.flex-btn{
 			position: fixed;
@@ -447,6 +456,9 @@ body.flexpanel-reveal{
 			}
 			.flexpanel{
 				left: 0;
+				&.reveal{
+					left: 0;
+				}
 				.viewport-wrap{
 					@include transform("translate(0, 0)");
 				}
