@@ -153,6 +153,7 @@ h3 + p{
 	position: relative;		
 	margin:0 auto;
 	padding:20px 0 0;
+	border-top: 4px solid #EF6F6F;
 	div.inner{
 		padding:0;
 	} 
@@ -160,6 +161,10 @@ h3 + p{
 header.main{
 	text-align: center;
 	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+	margin: 15px 0 25px;
+	h3{
+		opacity: 0.7;
+	}
 	.inner-wrap{
 		padding: 0 20px;
 	}
