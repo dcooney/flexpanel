@@ -226,6 +226,31 @@
   background-color: #333;
 }
 
+.flexpanel-active .flex-btn {
+  opacity: 1 !important;
+  filter: alpha(opacity=100) !important;
+}
+.flexpanel-active .flex-btn span {
+  background-color: #222;
+}
+.flexpanel-active .flex-btn span.two {
+  opacity: 0;
+}
+.flexpanel-active .flex-btn span.one {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 15px;
+}
+.flexpanel-active .flex-btn span.three {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  top: 15px;
+}
+
 body.flexpanel-left .flexpanel {
   right: auto;
   left: -40%;
@@ -292,30 +317,6 @@ body.flexpanel-active.flexpanel-left .flexpanel .viewport-wrap {
   -moz-transform: translate(100%, 0);
   -ms-transform: translate(100%, 0);
   transform: translate(100%, 0);
-}
-body.flexpanel-active.flexpanel-left .flexpanel .viewport-wrap .flex-btn {
-  opacity: 1 !important;
-  filter: alpha(opacity=100) !important;
-}
-body.flexpanel-active.flexpanel-left .flexpanel .viewport-wrap .flex-btn span {
-  background-color: #222;
-}
-body.flexpanel-active.flexpanel-left .flexpanel .viewport-wrap .flex-btn span.two {
-  opacity: 0;
-}
-body.flexpanel-active.flexpanel-left .flexpanel .viewport-wrap .flex-btn span.one {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-  top: 15px;
-}
-body.flexpanel-active.flexpanel-left .flexpanel .viewport-wrap .flex-btn span.three {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  top: 15px;
 }
 body.flexpanel-active.flexpanel-right #wrapper {
   -webkit-transform: translate(-40%, 0);
