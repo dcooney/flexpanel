@@ -51,6 +51,7 @@ $('.flexpanel').flexpanel({
     direction: 'right', // 'left' | 'right'
     wrapper: '#wrapper',
     button: '.flex-btn',  
+    maxWidth: null // e.g. '768' if maxWidth is set FlexPanel will hide if viewport is larger then value
 });
 ```
 
