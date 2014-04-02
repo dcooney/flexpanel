@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  * jQuery FlexPanel v1.1
  * https://github.com/dcooney/flexpanel
@@ -526,6 +527,11 @@ body.flexpanel-reveal.flexpanel-left.flexpanel-active .flexpanel .viewport-wrap 
   -moz-transform: translate(0, 0);
   -ms-transform: translate(0, 0);
   transform: translate(0, 0);
+}
+
+body.flexpanel-hide .flex-btn,
+body.flexpanel-hide .flexpanel {
+  display: none;
 }
 
 ::-webkit-scrollbar {

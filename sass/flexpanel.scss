@@ -471,6 +471,17 @@ body.flexpanel-reveal{
 	}
 }
 
+//***********************************************
+// -- Hide Flexpanel
+//***********************************************
+body.flexpanel-hide{
+   .flex-btn,
+   .flexpanel{
+      display: none;
+   }
+}
+
+
 // Show scrollbars in webkit
 // https://gist.github.com/dcooney/8692729
 ::-webkit-scrollbar { width: 10px; color: #a3a499; }

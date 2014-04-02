@@ -16,6 +16,7 @@
       	  animation: 'slide', //'slide' | 'reveal'
           direction: 'right', // 'left | right'
           wrapper: '#wrapper', // Define content wrapper
+          maxWidth: null, // Max viewport width for FlexPanel, null = always, e.g. '768'.
           button: '.flex-btn' // Define the menu button(open/close)         
       };
       var options = $.extend(defaults, options); 
@@ -24,8 +25,10 @@
           $animation = options.animation, 
           $direction = options.direction,
           $wrapper = $(options.wrapper),
+          $maxWidth = options.maxWidth,
           $btn = $(options.button),
           $prefix = 'flexpanel',
+          $w = $(window).width(),
           $isMobile = (navigator.userAgent.match(/iemobile|android|webos|iphone|ipad|ipod|blackberry|bb10/i) ? true : false),
           isIE = false,
           $body = $('body');
@@ -51,7 +54,7 @@
             //***********************************************
             // -- FlexPanel Init Functions
             //***********************************************
-            $('body').addClass($prefix+ '-' + $direction + ' ' + $prefix+ '-' + $animation);
+            $('body').addClass($prefix+ '-' + $direction + ' ' + $prefix+ '-' + $animation + ' ' + $prefix+ '-hide');
             if($animation === 'reveal'){
             	$btn.append('<a href="javascript:void(0);"><span class="one"></span><span class="two"></span><span class="three"></span></a>');
             	$btn.appendTo($body);
@@ -59,7 +62,10 @@
 	            $btn.append('<a href="javascript:void(0);"><span class="one"></span><span class="two"></span><span class="three"></span></a>');
             }
             $btn.addClass('in-view');
-            $flexpanel.delay(500).fadeIn(250); //Display FlexPanel
+            if($maxWidth === null || $w <= $maxWidth){               
+       			$('body').removeClass('flexpanel-hide');
+    				$flexpanel.delay(500).fadeIn(250); //Display FlexPanel
+    			}
             if($animation === 'reveal')
             	$flexpanel.addClass('reveal');
             	
@@ -203,6 +209,28 @@
             }, 500);
          }
       });
+      
+      //***********************************************
+		// -- Window Resize() Event
+		//***********************************************
+		
+		$(window).resize(function(){
+			$w = $(window).width();
+			//console.log($maxWidth, $w);			
+			if($maxWidth === null){//If screen width has not been defined
+			   $flexpanel.show();
+			}else{
+			   //Hide FlexPanel if window is larger than maxWidth
+				if($w > $maxWidth){
+					if($('body.flexpanel-active'))
+					   $('body').removeClass('flexpanel-active').addClass('flexpanel-hide');
+				}else{
+				   $flexpanel.show();
+					$('body').removeClass('flexpanel-hide');
+				}
+			}
+		});
+		
 
       //***********************************************
       // -- Smooth Scrolling

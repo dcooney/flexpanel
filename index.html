@@ -86,7 +86,8 @@
     animation: 'slide',
     direction: 'right',
     wrapper: '#wrapper',
-    button: '.flex-btn'  
+    button: '.flex-btn',
+    maxWidth: '768'
 });</code></pre>
         </div>
       </section>
@@ -114,6 +115,7 @@
     direction: 'right', // 'left' | 'right'
 	wrapper: '#wrapper', // Define the main content wrapper
 	button: '.flex-btn', // Define the menu button
+	maxWidth: null // Max viewport width for FlexPanel, null = always showing, e.g. '768'.
 }
         </code></pre>
         </div>
@@ -225,7 +227,7 @@
 <script type="text/javascript">
 	$('.flexpanel').flexpanel({
 		animation : 'reveal',
-		direction: 'right'
+		direction : 'right'
 	});
 	
 	$('a.toggle').click(function(){
