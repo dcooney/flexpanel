@@ -222,8 +222,10 @@
 			}else{
 			   //Hide FlexPanel if window is larger than maxWidth
 				if($w > $maxWidth){
-					if($('body.flexpanel-active'))
+					if($('body.flexpanel-active')){
 					   $('body').removeClass('flexpanel-active').addClass('flexpanel-hide');
+					   $wrapper.unbind('click');
+               }
 				}else{
 				   $flexpanel.show();
 					$('body').removeClass('flexpanel-hide');
