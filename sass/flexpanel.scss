@@ -299,25 +299,7 @@ body.flexpanel-active{
 				right:-$mobilePanelWidth;	
 			}
 	    	.viewport-wrap{
-				@include transform("translate(-100%, 0)");		
-				.flex-btn{
-					opacity: 1 !important;
-					filter: alpha(opacity = 100) !important;				
-					span{
-						background-color: #222;
-						&.two {
-							opacity: 0;
-						}
-						&.one{
-							@include transform("rotate(45deg)");
-							top:15px;
-						}
-						&.three{
-							@include transform("rotate(-45deg)");
-							top:15px;
-						}
-					}
-				}
+				@include transform("translate(-100%, 0)");					
 			}
 		}	
 	}
