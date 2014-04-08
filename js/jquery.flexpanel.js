@@ -207,31 +207,39 @@
             $('html, body').animate({
                scrollTop: target_top
             }, 500);
-         }
+         } 
       });
       
-      //***********************************************
+		//***********************************************
 		// -- Window Resize() Event
 		//***********************************************
 		
-		$(window).resize(function(){
-			$w = $(window).width();
+		$(window).resize(function() {
+			$w = window.innerWidth;
 			//console.log($maxWidth, $w);			
 			if($maxWidth === null){//If screen width has not been defined
-			   $flexpanel.show();
+				$flexpanel.show();
 			}else{
-			   //Hide FlexPanel if window is larger than maxWidth
+				//Hide FlexPanel if window is larger than maxWidth
 				if($w > $maxWidth){
 					if($('body.flexpanel-active')){
-					   $('body').removeClass('flexpanel-active').addClass('flexpanel-hide');
-					   $wrapper.unbind('click');
-               }
+						$('body').removeClass('flexpanel-active').addClass('flexpanel-hide');
+						$wrapper.unbind('click');
+					}
 				}else{
-				   $flexpanel.show();
+					$flexpanel.show();
 					$('body').removeClass('flexpanel-hide');
 				}
 			}
 		});
+		
+		var delay = (function(){
+			var timer = 0;
+			return function(callback, ms){
+				clearTimeout (timer);
+				timer = setTimeout(callback, ms);
+			};
+		})(); 
 		
 
       //***********************************************

@@ -56,5 +56,5 @@ module.exports = function (grunt) {
    grunt.loadNpmTasks('grunt-contrib-watch');
    grunt.loadNpmTasks('grunt-contrib-uglify');
 
-   grunt.registerTask('default', ['sass', 'uglify', 'cssmin', 'watch']);
+   grunt.registerTask('default', ['sass', 'cssmin', 'uglify', 'watch']);
 };
