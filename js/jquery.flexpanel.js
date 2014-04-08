@@ -215,7 +215,7 @@
 		//***********************************************
 		
 		$(window).resize(function() {
-			$w = window.innerWidth;
+			$w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 			//console.log($maxWidth, $w);			
 			if($maxWidth === null){//If screen width has not been defined
 				$flexpanel.show();
