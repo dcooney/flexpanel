@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  * jQuery FlexPanel v1.1
  * https://github.com/dcooney/flexpanel
@@ -100,7 +101,7 @@
   -webkit-overflow-scrolling: touch;
 }
 .flexpanel div.navigation {
-  padding: 10px 10px 50px;
+  padding: 10px 10px 80px;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
@@ -204,10 +205,10 @@
   display: block;
   margin: 0 auto 3px;
   clear: both;
-  -webkit-transition: -webkit-transform 0.3s ease;
-  -moz-transition: -moz-transform 0.3s ease;
-  -ms-transition: -ms-transform 0.3s ease;
-  transition: transform 0.3s ease;
+  -webkit-transition: all 0.2s ease 0.35s;
+  -moz-transition: all 0.2s ease 0.35s;
+  -ms-transition: all 0.2s ease 0.35s;
+  transition: all 0.2s ease 0.35s;
   position: absolute;
 }
 .flex-btn span.one {

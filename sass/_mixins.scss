@@ -6,12 +6,20 @@
 	border-radius: $radius;
 }
 
-@mixin transition($val){	
-	-webkit-transition: $val;
-	-moz-transition: $val;
-	-ms-transition: $val;
-	transition: $val;
+@mixin transition($type, $speed, $length, $delay: false){	
+   @if not $delay {
+     -webkit-transition: $type $speed $length;
+     -moz-transition: $type $speed $length;
+     -ms-transition: $type $speed $length;
+     transition: $type $speed $length;
+  } @else {
+    -webkit-transition: $type $speed $length $delay;
+    -moz-transition: $type $speed $length $delay;
+    -ms-transition: $type $speed $length $delay;
+    transition: $type $speed $length $delay;
+  }
 }
+
 @mixin transform($value){	
 	-webkit-transform: #{$value};
 	-moz-transform: #{$value};

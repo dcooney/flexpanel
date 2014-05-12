@@ -24,7 +24,7 @@
     @include transform('translate3d(0,0,0)');	
 	-webkit-backface-visibility: hidden;
 	-webkit-perspective: 1000;		
-	@include transition(all $speed ease);
+	@include transition(all, $speed, ease);
 	z-index: 0;
 	background: #f7f7f7;
 }	
@@ -63,7 +63,7 @@
 		@include transform('translate3d(0,0,0)');
 		-webkit-backface-visibility: hidden;
 		-webkit-perspective: 1000;
-		@include transition(all $speed ease);
+		@include transition(all, $speed, ease);
 		z-index: 1;
 	}	
 	
@@ -82,14 +82,14 @@
 	}
 		
 	div.navigation{
-		padding: 10px 10px 50px;
-		@include transition(all $speed ease);			
+		padding: 10px 10px 80px;
+		@include transition(all, $speed, ease);			
 		ul{		
 			display: block;
 			clear: both;			
 			padding:0;
 			margin:0;
-			@include transition(all $speed ease);			
+			@include transition(all, $speed, ease);			
 			li{
 				margin:0 3%;
 				padding:0;
@@ -157,7 +157,7 @@
 	top:25px;	
 	background: #fff;		
 	@include border-radius(3px);
-	@include transition(all $speed ease);
+	@include transition(all, $speed, ease);
 	cursor: pointer;
 	opacity: 0;
 	filter: alpha(opacity = 0);
@@ -178,10 +178,7 @@
 		display: block;
 		margin:0 auto 3px;
 		clear: both;
-		-webkit-transition: -webkit-transform 0.3s ease;
-		-moz-transition: -moz-transform 0.3s ease;
-		-ms-transition: -ms-transform 0.3s ease;
-		transition: transform 0.3s ease;
+		@include transition(all, 0.2s, ease, $wait);
 		position: absolute;
 		&.one{
 			top: 9px;
