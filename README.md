@@ -1,6 +1,6 @@
 #FlexPanel
 
-A responsive scrolling panel navigation for mobile and desktop
+A responsive panel navigation for mobile and desktop
 
 ####
 View FlexPanel examples on the [official website](http://flexpanel.connekthq.com)
