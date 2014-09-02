@@ -56,6 +56,8 @@ $('.flexpanel').flexpanel({
 ```
 
 ##Changelog
+- 09/02/2014, Updated Hammer JS to version 2
+- 09/02/2014, Updated core js, removing old deprecated functions
 - 03/14/2014, Added reveal animation
 - 03/12/2014, Removing maxWidth parameter
 - 03/1/2014, Added IE8 & 9 support
