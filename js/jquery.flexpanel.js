@@ -11,9 +11,10 @@
  */
 (function ($) {
    "use strict";
+   
    $.flexpanel = function (el, options) {
       var defaults = { 
-      	  animation: 'slide', //'slide' | 'reveal'
+      	 animation: 'slide', //'slide' | 'reveal'
           direction: 'right', // 'left | right'
           wrapper: '#wrapper', // Define content wrapper
           maxWidth: null, // Max viewport width for FlexPanel, null = always, e.g. '768'.
@@ -69,8 +70,8 @@
             if($animation === 'reveal')
             	$flexpanel.addClass('reveal');
             	
-            if ($.fn.hammer && $isMobile) 
-            	methods.touch();// If hammer.js is running && Mobile === True;
+            if ($.fn.hammer /* && $isMobile */ ) 
+            	methods.touch();// If hammer.js is installed
             
          },
          slide: function (e) {
@@ -118,68 +119,27 @@
             //***********************************************
             // -- Swipe & Touch Events
             //***********************************************
-            $btn.hammer().on("swipe, drag", function (event) {
+            
+            $btn.hammer().bind("panleft panright", function (event) {
                switch ($direction) {
                case 'right':
-                  if (event.gesture.direction === 'right' && $('body').hasClass('flexpanel-active')) {
+                  if (event.type === 'panleft' && !$('body').hasClass('flexpanel-active')) { //Open
+                     methods.slide();
+                  }
+                  if (event.type === 'panright' && $('body').hasClass('flexpanel-active')) { //Close
                      methods.slide();
                   }
                   break;
-               case 'left':
-                  if (event.gesture.direction === 'left' && $('body').hasClass('flexpanel-active')) {
+               case 'left':   
+                  if (event.type === 'panright' && !$('body').hasClass('flexpanel-active')) { //Open
                      methods.slide();
                   }
-                  break;
-               case 'top':
-                  if (event.gesture.direction === 'up' && $('body').hasClass('flexpanel-active')) {
+                  if (event.type === 'panleft' && $('body').hasClass('flexpanel-active')) { //Close
                      methods.slide();
                   }
                   break;
                }
             });
-
-            $btn.hammer().on("swipe, drag", function (event) {
-               //$wrapper and $btn swipe events
-               switch ($direction) {
-               case 'right':
-                  if (event.gesture.direction === 'left' && !$('body').hasClass('flexpanel-active')) {
-                     methods.slide();
-                  }
-                  break;
-               case 'left':
-                  if (event.gesture.direction === 'right' && !$('body').hasClass('flexpanel-active')) {
-                     methods.slide();
-                  }
-                  break;
-               }
-            });
-            if ($direction === 'top') {
-               $btn.hammer().on("swipe, drag", function (event) {
-                  if (event.gesture.direction === 'down' && !$body.hasClass('flexpanel-active')) {
-                     methods.slide();
-                  }
-               });
-            }
-            // Function to determine swipe direction, then show/hide nav if scrolling down
-            // I'm going to disable this for now.
-            if ($direction === 'left' || $direction === 'right') {
-               var isWindowsPhone = /iemobile/i.test(navigator.userAgent.toLowerCase());
-               if (!isWindowsPhone) {
-                  $body.hammer().on("dragdown", function (event) {
-                     //Determine if the user is attempting to scroll to top by deltaTime
-                     if (event.gesture.deltaTime > 50) {
-                        //$btn.addClass('in-view');
-                     }
-                  });
-                  $body.hammer().on("dragup", function (event) {
-                     //Determine if the user is attempting to scroll to top by timing the drag time
-                     var $top = $(window).scrollTop();
-                     if (event.gesture.deltaTime > 50 && $top > 100) {
-                        //$btn.removeClass('in-view');
-                     }
-                  });
-               }
-            }
             //Lets add drag_lock to the panel. Coming soon
             //$('body').hammer({ drag_lock_to_axis: true }).on("release dragleft dragright swipeleft swiperight", handleHammer);
          }         
