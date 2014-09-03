@@ -120,21 +120,22 @@
             // -- Swipe & Touch Events
             //***********************************************
             
-            $btn.hammer().bind("panleft panright", function (event) {
+            $btn.hammer().bind("swipeleft swiperight", function (event) {
+               var evType = event.type;               
                switch ($direction) {
                case 'right':
-                  if (event.type === 'panleft' && !$('body').hasClass('flexpanel-active')) { //Open
+                  if (evType === 'swipeleft' && !$('body').hasClass('flexpanel-active')) { //Open
                      methods.slide();
                   }
-                  if (event.type === 'panright' && $('body').hasClass('flexpanel-active')) { //Close
+                  if (evType === 'swiperight' && $('body').hasClass('flexpanel-active')) { //Close
                      methods.slide();
                   }
                   break;
                case 'left':   
-                  if (event.type === 'panright' && !$('body').hasClass('flexpanel-active')) { //Open
+                  if (evType === 'swiperight' && !$('body').hasClass('flexpanel-active')) { //Open
                      methods.slide();
                   }
-                  if (event.type === 'panleft' && $('body').hasClass('flexpanel-active')) { //Close
+                  if (evType === 'swipeleft' && $('body').hasClass('flexpanel-active')) { //Close
                      methods.slide();
                   }
                   break;
